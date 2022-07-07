@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link, graphql } from "gatsby"
 import { useFlexSearch } from 'react-use-flexsearch'
 
@@ -9,7 +9,10 @@ import SearchBar from "../components/search"
 import "./index.css"
 
 const BlogIndex = ({ data, location }) => {
-  const { search } = window.location
+
+  const isBrowser = () => typeof window !== "undefined"
+
+  const { search } = isBrowser() && window.location
   const query = new URLSearchParams(search).get('s')
   const [searchQuery, setSearchQuery] = useState(query || '')
   const siteTitle = data.site.siteMetadata?.title || `Title`

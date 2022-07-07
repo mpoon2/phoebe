@@ -3909,7 +3909,7 @@ command-exists@^1.2.4:
   resolved "https://registry.yarnpkg.com/command-exists/-/command-exists-1.2.9.tgz#c50725af3808c8ab0260fd60b01fbfa25b954f69"
   integrity sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==
 
-commander@^2.20.0, commander@^2.20.3:
+commander@^2.19.0, commander@^2.20.0, commander@^2.20.3:
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
@@ -5560,6 +5560,16 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.6.tgz#022e9218c637f9f3fc9c35ab9c9193f05add60b2"
   integrity sha512-0sQoMh9s0BYsm+12Huy/rkKxVu4R1+r96YX5cG44rHV0pQ6iC3Q+mkoMFaGWObMFYQxCVT+ssG1ksneA2MI9KQ==
 
+flexsearch@^0.6.22, flexsearch@^0.6.32:
+  version "0.6.32"
+  resolved "https://registry.yarnpkg.com/flexsearch/-/flexsearch-0.6.32.tgz#1e20684d317af65baa445cdd9864a5f5b320f510"
+  integrity sha512-EF1BWkhwoeLtbIlDbY/vDSLBen/E5l/f1Vg7iX5CDymQCamcx1vhlc3tIZxIDplPjgi0jhG37c67idFbjg+v+Q==
+
+flexsearch@^0.7.0:
+  version "0.7.21"
+  resolved "https://registry.yarnpkg.com/flexsearch/-/flexsearch-0.7.21.tgz#0f5ede3f2aae67ddc351efbe3b24b69d29e9d48b"
+  integrity sha512-W7cHV7Hrwjid6lWmy0IhsWDFQboWSng25U3VVywpHOTJnnAZNPScog67G+cVpeX9f7yDD21ih0WDrMMT+JoaYg==
+
 follow-redirects@^1.0.0, follow-redirects@^1.14.0:
   version "1.15.1"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.1.tgz#0ca6a452306c9b276e4d3127483e29575e207ad5"
@@ -5883,6 +5893,16 @@ gatsby-plugin-image@^2.18.0:
     objectFitPolyfill "^2.3.5"
     prop-types "^15.8.1"
 
+gatsby-plugin-local-search@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-local-search/-/gatsby-plugin-local-search-2.0.1.tgz#adf0aeff4b06feee57574420369ca0950a4bcdf7"
+  integrity sha512-qrApdH2IYfHL+dSmcwSzhDPVxlkt13N0IfEkKxfWf0gITmBwObOJBYAMnYiYUmP0dpYmSV9anJE//SLZBSsisA==
+  dependencies:
+    flexsearch "^0.6.32"
+    lodash "^4.17.19"
+    lunr "^2.3.8"
+    pascal-case "^3.1.1"
+
 gatsby-plugin-manifest@^4.18.0:
   version "4.18.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-4.18.0.tgz#4a7f0251e260709415c520fffcc92ae3a2ce65cb"
@@ -5993,6 +6013,17 @@ gatsby-react-router-scroll@^5.18.0:
     "@babel/runtime" "^7.15.4"
     prop-types "^15.8.1"
 
+gatsby-remark-autolink-headers@^5.16.0:
+  version "5.18.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-autolink-headers/-/gatsby-remark-autolink-headers-5.18.0.tgz#c81da4a6a7c2f2f182b483447fee44c0a87d1b53"
+  integrity sha512-majir8Za7i9kXQEBGq3PEMTSV4NG2/bD7Nx6go54Wx3SbxRldp4IeLwdtgOntdugwv//Z2h4uun0xF15O43eBA==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    github-slugger "^1.3.0"
+    lodash "^4.17.21"
+    mdast-util-to-string "^2.0.0"
+    unist-util-visit "^2.0.3"
+
 gatsby-remark-copy-linked-files@^5.18.0:
   version "5.18.0"
   resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-5.18.0.tgz#2ee8a1ae2e7be91258e54190421bb55705377872"
@@ -6023,6 +6054,17 @@ gatsby-remark-images@^6.18.0:
     query-string "^6.14.1"
     unist-util-select "^3.0.4"
     unist-util-visit-parents "^3.1.1"
+
+gatsby-remark-katex@^6.16.0:
+  version "6.18.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-katex/-/gatsby-remark-katex-6.18.0.tgz#1997a115389af56e7f2fadbe7bc9de46e885ac1c"
+  integrity sha512-q4dple++F9GE95T5mS6bBSahlSCRdFpKdK8KZl/I5oPsj1+O9ZeYbizVyA+7bUroshg7c8aE3eEJqnOwDLEa5A==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    rehype-parse "^7.0.1"
+    remark-math "^4.0.0"
+    unified "^9.2.2"
+    unist-util-visit "^2.0.3"
 
 gatsby-remark-prismjs@^6.18.0:
   version "6.18.0"
@@ -6401,7 +6443,7 @@ github-from-package@0.0.0:
   resolved "https://registry.yarnpkg.com/github-from-package/-/github-from-package-0.0.0.tgz#97fb5d96bfde8973313f20e8288ef9a167fa64ce"
   integrity sha512-SyHy3T1v2NUXn29OsWdxmK6RwHD+vkj3v8en8AOBZ1wBQ/hCAQ5bAQTD02kW4W9tUp/3Qh6J8r9EvntiyCmOOw==
 
-github-slugger@^1.2.1:
+github-slugger@^1.2.1, github-slugger@^1.3.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-1.4.0.tgz#206eb96cdb22ee56fdc53a28d5a302338463444e"
   integrity sha512-w0dzqw/nt51xMVmlaV1+JRzN+oCa1KfcgGEWhxUG16wbdA+Xnt/yoFO8Z8x/V82ZcZ0wy6ln9QDup5avbhiDhQ==
@@ -7550,6 +7592,13 @@ jsonfile@^6.0.1:
     array-includes "^3.1.5"
     object.assign "^4.1.2"
 
+katex@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/katex/-/katex-0.12.0.tgz#2fb1c665dbd2b043edcf8a1f5c555f46beaa0cb9"
+  integrity sha512-y+8btoc/CK70XqcHqjxiGWBOeIL8upbS0peTPXTvgrh21n1RiWWcIpSWM+4uXq+IAgNh9YYQWdc7LVDPDAEEAg==
+  dependencies:
+    commander "^2.19.0"
+
 kebab-hash@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/kebab-hash/-/kebab-hash-0.1.2.tgz#dfb7949ba34d8e70114ea7d83e266e5e2a4abaac"
@@ -7951,6 +8000,11 @@ lru-queue@^0.1.0:
   dependencies:
     es5-ext "~0.10.2"
 
+lunr@^2.3.8:
+  version "2.3.9"
+  resolved "https://registry.yarnpkg.com/lunr/-/lunr-2.3.9.tgz#18b123142832337dd6e964df1a5a7707b25d35e1"
+  integrity sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==
+
 make-dir@^3.0.0, make-dir@^3.0.2, make-dir@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-3.1.0.tgz#415e967046b3a7f1d185277d84aa58203726a13f"
@@ -8063,6 +8117,15 @@ mdast-util-gfm@^0.1.0:
     mdast-util-gfm-table "^0.1.0"
     mdast-util-gfm-task-list-item "^0.1.0"
     mdast-util-to-markdown "^0.6.1"
+
+mdast-util-math@^0.1.0:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/mdast-util-math/-/mdast-util-math-0.1.2.tgz#629a0793bd8822432917e5ddda5279492390cc2b"
+  integrity sha512-fogAitds+wH+QRas78Yr1TwmQGN4cW/G2WRw5ePuNoJbBSPJCxIOCE8MTzHgWHVSpgkRaPQTgfzXRE1CrwWSlg==
+  dependencies:
+    longest-streak "^2.0.0"
+    mdast-util-to-markdown "^0.6.0"
+    repeat-string "^1.0.0"
 
 mdast-util-to-hast@^10.2.0:
   version "10.2.0"
@@ -8248,6 +8311,14 @@ micromark-extension-gfm@^0.3.0:
     micromark-extension-gfm-table "~0.4.0"
     micromark-extension-gfm-tagfilter "~0.3.0"
     micromark-extension-gfm-task-list-item "~0.3.0"
+
+micromark-extension-math@^0.1.0:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/micromark-extension-math/-/micromark-extension-math-0.1.2.tgz#5d7bb2b86018da4a758c05f3991664430ee4d711"
+  integrity sha512-ZJXsT2eVPM8VTmcw0CPSDeyonOn9SziGK3Z+nkf9Vb6xMPeU+4JMEnO6vzDL10562Favw8Vste74f54rxJ/i6Q==
+  dependencies:
+    katex "^0.12.0"
+    micromark "~2.11.0"
 
 micromark@^2.11.3, micromark@~2.11.0, micromark@~2.11.3:
   version "2.11.4"
@@ -9054,7 +9125,7 @@ parseurl@^1.3.3, parseurl@~1.3.3:
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
   integrity sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==
 
-pascal-case@^3.1.2:
+pascal-case@^3.1.1, pascal-case@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/pascal-case/-/pascal-case-3.1.2.tgz#b48e0ef2b98e205e7c1dae747d0b1508237660eb"
   integrity sha512-uWlGT3YSnK9x3BQJaOdcZwrnV6hPpd8jFH1/ucpiLRPh/2zCVJKS19E4GvYHvaCcACn3foXZ0cLB9Wrx1KGe5g==
@@ -9790,6 +9861,13 @@ react-side-effect@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.2.tgz#dc6345b9e8f9906dc2eeb68700b615e0b4fe752a"
   integrity sha512-PVjOcvVOyIILrYoyGEpDN3vmYNLdy1CajSFNt4TDsVQC5KpTijDvWVoR+/7Rz2xT978D8/ZtFceXxzsPwZEDvw==
 
+react-use-flexsearch@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-use-flexsearch/-/react-use-flexsearch-0.1.1.tgz#2db48989a9197ee3d9776a6c2ae1ff6e65919ba2"
+  integrity sha512-UDRDB26HPcAo0gXNkUYYkcjoYCW4FSWr7Ich4adgVr7bqefJG7fnjlcqnwsKQkbZuteRLYzzox+1FKRTt3Z5vg==
+  dependencies:
+    flexsearch "^0.6.22"
+
 react@^18.1.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
@@ -9950,6 +10028,14 @@ regjsparser@^0.8.2:
   dependencies:
     jsesc "~0.5.0"
 
+rehype-parse@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-parse/-/rehype-parse-7.0.1.tgz#58900f6702b56767814afc2a9efa2d42b1c90c57"
+  integrity sha512-fOiR9a9xH+Le19i4fGzIEowAbwG7idy2Jzs4mOrFWBSJ0sNUgy0ev871dwWnbOo371SjgjG4pwzrbgSVrKxecw==
+  dependencies:
+    hast-util-from-parse5 "^6.0.0"
+    parse5 "^6.0.0"
+
 relay-runtime@12.0.0:
   version "12.0.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-12.0.0.tgz#1e039282bdb5e0c1b9a7dc7f6b9a09d4f4ff8237"
@@ -9974,6 +10060,14 @@ remark-gfm@^1.0.0:
   dependencies:
     mdast-util-gfm "^0.1.0"
     micromark-extension-gfm "^0.3.0"
+
+remark-math@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/remark-math/-/remark-math-4.0.0.tgz#494ddd50766555ad2332e3afca7796a76452256f"
+  integrity sha512-lH7SoQenXtQrvL0bm+mjZbvOk//YWNuyR+MxV18Qyv8rgFmMEGNuB0TSCQDkoDaiJ40FCnG8lxErc/zhcedYbw==
+  dependencies:
+    mdast-util-math "^0.1.0"
+    micromark-extension-math "^0.1.0"
 
 remark-parse@^9.0.0:
   version "9.0.0"

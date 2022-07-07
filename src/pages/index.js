@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { Link, graphql } from "gatsby"
 import { useFlexSearch } from 'react-use-flexsearch'
 
@@ -18,6 +18,11 @@ const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   
   const results = useFlexSearch(searchQuery, data.localSearchPages.index, data.localSearchPages.store);
+  const unFlattenResults = results =>
+    results.map(post => {
+        const { date, slug, tags, title } = post;
+        return { slug, frontmatter: { title, date, tags } };
+    });
   const finalResults = unFlattenResults(results)
   const posts = data.allMarkdownRemark.nodes
 
@@ -88,12 +93,6 @@ const BlogIndex = ({ data, location }) => {
     </Layout>
   )
 }
-
-export const unFlattenResults = results =>
-    results.map(post => {
-        const { date, slug, tags, title } = post;
-        return { slug, frontmatter: { title, date, tags } };
-    });
 
 export default BlogIndex
 

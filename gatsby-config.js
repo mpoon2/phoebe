@@ -2,8 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `mattycakes`,
+      summary: `who lives and studies in Mississauga.`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
@@ -12,6 +12,41 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-local-search',
+      options: {
+          name: 'pages',
+          engine: 'flexsearch',
+          query: `
+            {
+              allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+                nodes {
+                  excerpt
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    date(formatString: "MMMM DD, YYYY")
+                    title
+                  }
+                  rawMarkdownBody
+                }
+              }
+            }
+            `,
+          ref: 'slug',
+          index: ['title', 'excerpt', 'body'],
+          store: ['title', 'excerpt', 'date', 'slug', 'body'],
+          normalizer: ({ data }) =>
+          data.allMarkdownRemark.nodes.map(node => ({
+              title: node.frontmatter.title,
+              excerpt: node.excerpt,
+              date: node.frontmatter.date,
+              slug: node.fields.slug,
+              body: node.rawMarkdownBody
+          })),      
+      }
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -42,6 +77,19 @@ module.exports = {
             options: {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
+          },
+          {
+            resolve:`gatsby-remark-autolink-headers`,
+            options: {
+              isIconAfterHeader:true,
+            }
+          },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+              strict: `ignore`
+            }
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
@@ -128,5 +176,6 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    
   ],
 }

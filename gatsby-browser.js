@@ -7,4 +7,7 @@ import "./src/normalize.css"
 import "./src/style.css"
 
 // Highlighting for code blocks
-import "prismjs/themes/prism.css"
+require ("./prismjs/themes/nord.css")
+
+// KaTeX CSS file
+require(`katex/dist/katex.min.css`)

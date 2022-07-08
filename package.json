@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
-  "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "name": "phoebe",
+  "private": false,
+  "description": "A minimal Gatsby theme for Obsidian based authoring",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Matthew Y.F. <matt.y.poon24@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/mpoon2/phoebe/issues"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.5",
@@ -51,14 +51,14 @@
     "prettier": "^2.7.1",
     "tailwindcss": "^3.1.4"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/mpoon2/phoebe",
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/mpoon2/phoebe.git"
   },
   "scripts": {
     "build": "gatsby build",

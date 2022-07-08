@@ -10,7 +10,7 @@
 
 This is a minimal [Gatsby](https://www.gatsbyjs.com/) theme for [Obsidian](https://obsidian.md) authoring.
 
-First and foremost, this is a personal project and not meant to deployed in any production builds.  The [gatsby-starter-blog](https://github.com/gatsbyjs/gatsby-starter-blog) was used as a base due to it's simplicity and commitment to using remark for Markdown parsing. A non comprehensive list of technologies used can be found below:
+First and foremost, this is a personal project and not meant to be deployed in any production builds.  The [gatsby-starter-blog](https://github.com/gatsbyjs/gatsby-starter-blog) was used as a base due to it's simplicity and commitment to using remark for Markdown parsing. A non comprehensive list of technologies used can be found below:
 
 - [Obsidian](https://obsidian.md) - knowledge base management and markdown authoring
 - [Gatsby](https://www.gatsbyjs.com) - to generate static web pages from MD
@@ -128,6 +128,6 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 ## Extra References
 
-- [code-server Document](https://coder.com/docs/code-server/latest)
-- [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/)
-- [to our documentation](https://www.gatsbyjs.com/docs/)
+- [Code-server documententation](https://coder.com/docs/code-server/latest)
+- [In-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/)
+- [Gatsby documentation](https://www.gatsbyjs.com/docs/)

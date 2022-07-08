@@ -9,4 +9,4 @@ jobs:
     steps:
     - name: cURL Webhook
       run: |
-        curl https://webhook.mattycakes.ca/hooks/build
+        curl https://webhook.mattycakes.ca/hooks/buildSource

@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `mattycakes`,
@@ -13,7 +17,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-clerk',
       options: {
-        frontendApi: "clerk.mattycakes.ca"
+        frontendApi: process.env.API_KEY,
         }
     },
     {

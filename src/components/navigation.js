@@ -5,15 +5,15 @@ import "./navigation.scss"
 import { StaticImage } from "gatsby-plugin-image"
 
 import Icon from "./logo.inline.svg";
-
+import DarkToggle from "./darkToggle"
 
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Home', href: '/', current: false },
   { name: 'Team', href: '#', current: false },
   { name: 'Projects', href: '#', current: false },
   { name: 'Calendar', href: '#', current: false },
@@ -29,12 +29,13 @@ export default function Example() {
             site {
                 siteMetadata {
                     title
+                    subtitle
                 }
             }
         }
     `)
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="nav">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -52,42 +53,42 @@ export default function Example() {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
+                  <Link to="/" className="flex">
                     <Icon 
-                        className="block lg:hidden h-8 w-auto" 
+                      className="block lg:hidden h-6 w-auto my-auto brand-logo" 
                     />
                     <Icon 
-                        className="hidden lg:block h-8 w-auto"
+                      className="hidden lg:block h-6 w-auto my-auto brand-logo"
                     />
-                    <span className="hidden lg:block h-8 w-auto">
-                    {query.site.siteMetadata.title}
-                    </span>
+                    <div className="site-title my-auto">
+                      <span className="title hidden lg:block px-1 py-0 font-bold text-lg leading-4">
+                      {query.site.siteMetadata.title}
+                      </span>
+                      <span className="subtitle hidden lg:block px-1 py-0 font-semibold text-xxs tracking-tight">
+                      {query.site.siteMetadata.subtitle}
+                      </span>
+                    </div>
+                  </Link>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
+                      <Link
+                        to={item.href}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          'nav-item',
                           'px-3 py-2 rounded-md text-sm font-medium'
                         )}
-                        aria-current={item.current ? 'page' : undefined}
+                        activeClassName="active-nav-item"
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+                <DarkToggle />
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">

@@ -1,47 +1,39 @@
-$main-color: #df01d7;
-$main-text-gray-color: #484848;
-$light-gray-color: #a9a9a9;
-$main-black-color: #20232a;
-$main-white-color: #ededed;
+.subtitle {
+  color: var(--yellow);
+}
 
-.navbar {
-  padding: 20px;
-  margin-bottom: 40px;
-  background-color: $main-black-color;
+/* Nav Item Styling */
 
-  .nav-search {
-    height: 50px;
-    width: 300px !important;
-    border-color: $main-color;
+.active-nav-item {
+  color: var(--active-link) !important;
+}
+
+a:hover.nav-item {
+  background-color: var(--text-light);
+  color: var(--nord6);
+}
+
+.dark-mode a:hover.nav-item {
+  background-color: var(--nord3);
+  color: var(--nord6);
+}
+
+/* Logo Fill Colours */
+
+svg.brand-logo {
+  .cls-1 {
+    fill: var(--yellow);
   }
-
-  .navbar-brand {
-    margin-right: 30px;
-    font-size: 27px;
-    letter-spacing: 1px;
-    color: $main-color !important;
-    font-weight: 500;
+  .cls-2 {
+    fill: var(--text-light);
   }
+}
 
-  .nav-item {
-    font-size: 14px;
+.dark-mode svg.brand-logo {
+  .cls-1 {
+    fill: var(--yellow);
   }
-
-  .btn-nav-search {
-    border-color: $main-color;
-    color: $main-color;
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: transparent !important;
-      border-color: $main-color !important;
-      color: $main-color !important;
-      box-shadow: none;
-    }
-  }
-
-  .nav-item {
-    color: $main-white-color;
+  .cls-2 {
+    fill: var(--text-dark);
   }
 }

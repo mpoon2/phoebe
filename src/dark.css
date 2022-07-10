@@ -1,0 +1,8 @@
+@import "palette.css";
+
+/* HTML Elements */
+
+body.dark-mode {
+    background-color: var(--body-dark);
+    color: var(--text-dark)
+}

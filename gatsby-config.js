@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Mattycakes`,
+    title: `mattycakes`,
+    subtitle: `Self-hosted Digital Garden.`,
     author: {
       name: `mattycakes`,
       summary: `who lives and studies in Mississauga.`,
@@ -9,6 +10,15 @@ module.exports = {
     siteUrl: `https://mattycakes.ca/`,
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Inter:300,400,500,600,700,800,900','Fira Code:300,400,500,600,700']
+        }
+      }
+    },
+    'gatsby-plugin-use-dark-mode',
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
@@ -56,7 +66,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
+        path: `${__dirname}/content`,
         name: `blog`,
       },
     },

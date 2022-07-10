@@ -40,7 +40,7 @@ const BlogPostTemplate = ({ data, location }) => {
               />
             </SignedIn>
             <SignedOut>
-              <p>Content is private and only viewable to mattycakes.</p>
+              <p>Content is private and only viewable to mattycakes.</p> <SignInButton />
             </SignedOut>
           <hr />
           <footer>

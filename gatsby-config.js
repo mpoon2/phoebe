@@ -13,7 +13,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-clerk',
       options: {
-        frontendApi: "clerk.fun.lab-82.lcl.dev"
+        frontendApi: "clerk.mattycakes.ca"
         }
     },
     {

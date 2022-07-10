@@ -11,6 +11,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-clerk',
+      options: {
+        frontendApi: "clerk.fun.lab-82.lcl.dev"
+        }
+    },
+    {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {

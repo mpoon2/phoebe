@@ -5,6 +5,13 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { 
+  SignedIn, 
+  SignedOut, 
+  SignInButton
+} from "@clerk/clerk-react";
+
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -25,10 +32,31 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
-        <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
-        />
+        <Router>
+          <Route path={["/ramblings", "/personal", "/CHANGELOG"]}>
+            <section
+              dangerouslySetInnerHTML={{ __html: post.html }}
+              itemProp="articleBody"
+            />
+          </Route>
+          <Route path={["/academic", "/journal"]}>
+            <SignedIn>
+              <section
+                dangerouslySetInnerHTML={{ __html: post.html }}
+                itemProp="articleBody"
+              />
+            </SignedIn>
+            <SignedOut>
+              <div> This content is only accessible to mattycakes.
+                <SignInButton mode="modal">
+                  <button className="btn">
+                    Sign in
+                  </button>
+                </SignInButton>
+              </div>
+            </SignedOut>
+          </Route>
+        </Router>
         <hr />
         <footer>
           <Bio />

@@ -16,7 +16,10 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+  const isBrowser = () => typeof window !== "undefined"
 
+  
+  if (isBrowser()) {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
@@ -32,12 +35,31 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
-
+        <Router>
+          <Route path={["/ramblings", "/personal", "/CHANGELOG"]}>
             <section
               dangerouslySetInnerHTML={{ __html: post.html }}
               itemProp="articleBody"
             />
-         
+          </Route>
+          <Route path={["/academic", "/journal"]}>
+            <SignedIn>
+              <section
+                dangerouslySetInnerHTML={{ __html: post.html }}
+                itemProp="articleBody"
+              />
+            </SignedIn>
+            <SignedOut>
+              <div> This content is only accessible to mattycakes.
+                <SignInButton mode="modal">
+                  <button className="btn">
+                    Sign in
+                  </button>
+                </SignInButton>
+              </div>
+            </SignedOut>
+          </Route>
+        </Router>
         <hr />
         <footer>
           <Bio />
@@ -71,6 +93,7 @@ const BlogPostTemplate = ({ data, location }) => {
       </nav>
     </Layout>
   )
+            }
 }
 
 export default BlogPostTemplate

@@ -1,28 +1,13 @@
-import React, { useState } from "react"
+import React from 'react';
 import { Link, graphql } from "gatsby"
-import { useFlexSearch } from 'react-use-flexsearch'
-
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import SearchBar from "../components/search"
 import "./index.css"
 
 const BlogIndex = ({ data, location }) => {
 
-  const isBrowser = () => typeof window !== "undefined"
-
-  const { search } = isBrowser() && window.location
-  const query = new URLSearchParams(search).get('s')
-  const [searchQuery, setSearchQuery] = useState(query || '')
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  
-  const results = useFlexSearch(searchQuery, data.localSearchPages.index, data.localSearchPages.store);
-  const unFlattenResults = results =>
-    results.map(post => {
-        const { date, slug, tags, title } = post;
-        return { slug, frontmatter: { title, date, tags } };
-    });
-  const finalResults = unFlattenResults(results)
+
   const posts = data.allMarkdownRemark.nodes
 
   if (posts.length === 0) {
@@ -41,24 +26,9 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
-      <SearchBar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-      />
-      <div>
-      {finalResults.map(finalResults => {
-      return (
-          <h2>
-            <Link to={finalResults.slug} itemProp="url">
-              <span itemProp="headline">{finalResults.slug}</span>
-            </Link>
-          </h2>
-      )})}
-      </div>
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
-
           return (
             <li key={post.fields.slug}>
               <article

@@ -33,3 +33,18 @@ svg.brand-logo {
     fill: var(--text-dark);
   }
 }
+
+/* User Button */
+
+.cl-component .cl-user-button-trigger>.cl-user-button-avatar {
+  border-radius: 4px !important;
+}
+
+.cl-component .cl-user-button-trigger {
+  width:1.25rem !important;
+  height:1.25rem !important;
+}
+
+.cl-component.cl-user-button {
+  height:1.25rem !important;
+}

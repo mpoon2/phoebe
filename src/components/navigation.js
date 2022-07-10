@@ -10,6 +10,12 @@ import {
 import Icon from "./logo.inline.svg";
 import DarkToggle from "./darkToggle"
 import "./navigation.scss"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faUserAstronaut,
+  faMagnifyingGlass
+} from '@fortawesome/free-solid-svg-icons'
+import SearchModal from "../components/searchModal"
 
 /* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from '@headlessui/react'
@@ -27,16 +33,22 @@ function classNames(...classes) {
 }
 
 export default function Example() {
-    const query = useStaticQuery(graphql`
-        query SITE_TITLE {
-            site {
-                siteMetadata {
-                    title
-                    subtitle
-                }
-            }
-        }
-    `)
+
+  const [isOpen, setOpen] = React.useState(false);
+  const handleClick = () => {
+    setOpen(!isOpen);
+  };
+  const query = useStaticQuery(graphql`
+      query SITE_TITLE {
+          site {
+              siteMetadata {
+                  title
+                  subtitle
+              }
+          }
+      }
+  `)
+
   return (
     <Disclosure as="nav" className="nav">
       {({ open }) => (
@@ -100,13 +112,23 @@ export default function Example() {
                 <SignedOut>
                   <SignInButton>
                     <button className="btn" >
-                      Sign in
+                      <FontAwesomeIcon icon={faUserAstronaut} size="s" />
                     </button>
                   </SignInButton>
                 </SignedOut>
+                <button type="button" className="px-3 py-2 rounded-md text-sm font-medium" onClick={handleClick}>
+                  <FontAwesomeIcon icon={faMagnifyingGlass} size="s" />
+                </button>
               </div>
             </div>
           </div>
+
+          {/* Search */}
+          {isOpen && 
+            <div>
+              <SearchModal />
+            </div>
+          }
 
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">

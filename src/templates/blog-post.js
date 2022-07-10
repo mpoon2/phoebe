@@ -5,7 +5,6 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { 
   SignedIn, 
   SignedOut, 

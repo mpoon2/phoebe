@@ -16,10 +16,67 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-  const isBrowser = () => typeof window !== "undefined"
 
-  
-  if (isBrowser()) {
+  if ((location.pathname.includes('/academic/')) || (location.pathname.includes('/journal/'))) {
+    return (
+      <Layout location={location} title={siteTitle}>
+        <Seo
+          title={post.frontmatter.title}
+          description={post.frontmatter.description || post.excerpt}
+        />
+        <article
+          className="blog-post"
+          itemScope
+          itemType="http://schema.org/Article"
+        >
+          <header>
+            <h1 itemProp="headline">{post.frontmatter.title}</h1>
+            <p>{post.frontmatter.date}</p>
+          </header>
+            <SignedIn>
+              <section
+                dangerouslySetInnerHTML={{ __html: post.html }}
+                itemProp="articleBody"
+              />
+            </SignedIn>
+            <SignedOut>
+              <p>Content is private and only viewable to mattycakes.</p>
+            </SignedOut>
+          <hr />
+          <footer>
+            <Bio />
+          </footer>
+        </article>
+        <nav className="blog-post-nav">
+          <ul
+            style={{
+              display: `flex`,
+              flexWrap: `wrap`,
+              justifyContent: `space-between`,
+              listStyle: `none`,
+              padding: 0,
+            }}
+          >
+            <li>
+              {previous && (
+                <Link to={previous.fields.slug} rel="prev">
+                  ← {previous.frontmatter.title}
+                </Link>
+              )}
+            </li>
+            <li>
+              {next && (
+                <Link to={next.fields.slug} rel="next">
+                  {next.frontmatter.title} →
+                </Link>
+              )}
+            </li>
+          </ul>
+        </nav>
+      </Layout>
+    )
+  }
+
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
@@ -35,31 +92,10 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
-        <Router>
-          <Route path={["/ramblings", "/personal", "/CHANGELOG"]}>
             <section
               dangerouslySetInnerHTML={{ __html: post.html }}
               itemProp="articleBody"
             />
-          </Route>
-          <Route path={["/academic", "/journal"]}>
-            <SignedIn>
-              <section
-                dangerouslySetInnerHTML={{ __html: post.html }}
-                itemProp="articleBody"
-              />
-            </SignedIn>
-            <SignedOut>
-              <div> This content is only accessible to mattycakes.
-                <SignInButton mode="modal">
-                  <button className="btn">
-                    Sign in
-                  </button>
-                </SignInButton>
-              </div>
-            </SignedOut>
-          </Route>
-        </Router>
         <hr />
         <footer>
           <Bio />
@@ -93,7 +129,6 @@ const BlogPostTemplate = ({ data, location }) => {
       </nav>
     </Layout>
   )
-            }
 }
 
 export default BlogPostTemplate

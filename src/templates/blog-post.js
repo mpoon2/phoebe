@@ -32,31 +32,12 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
-        <Router>
-          <Route path={["/ramblings", "/personal", "/CHANGELOG"]}>
+
             <section
               dangerouslySetInnerHTML={{ __html: post.html }}
               itemProp="articleBody"
             />
-          </Route>
-          <Route path={["/academic", "/journal"]}>
-            <SignedIn>
-              <section
-                dangerouslySetInnerHTML={{ __html: post.html }}
-                itemProp="articleBody"
-              />
-            </SignedIn>
-            <SignedOut>
-              <div> This content is only accessible to mattycakes.
-                <SignInButton mode="modal">
-                  <button className="btn">
-                    Sign in
-                  </button>
-                </SignInButton>
-              </div>
-            </SignedOut>
-          </Route>
-        </Router>
+         
         <hr />
         <footer>
           <Bio />

@@ -3,7 +3,7 @@ import { SignIn } from "@clerk/clerk-react";
 
 // Render the sign in component in your
 // custom sign in page.
-function SignInPage() {
+const SignInPage = ()  => {
   return (
     <SignIn />
   );

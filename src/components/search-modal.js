@@ -1,6 +1,5 @@
-import React, { useState } from "react"
-import Highlighter from "react-highlight-words"
-import "./searchModal.scss"
+import React from "react"
+import "./search-modal.scss"
 import Search from "./search-index"
 const searchIndices = [{ name: `Pages`, title: `Pages` }]
 

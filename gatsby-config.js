@@ -38,41 +38,6 @@ module.exports = {
         }
       }
     },
-    {
-      resolve: 'gatsby-plugin-local-search',
-      options: {
-          name: 'pages',
-          engine: 'flexsearch',
-          query: `
-            {
-              allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-                nodes {
-                  excerpt
-                  fields {
-                    slug
-                  }
-                  frontmatter {
-                    date(formatString: "MMMM DD, YYYY")
-                    title
-                  }
-                  rawMarkdownBody
-                }
-              }
-            }
-            `,
-          ref: 'slug',
-          index: ['title', 'excerpt', 'body'],
-          store: ['title', 'excerpt', 'date', 'slug', 'body'],
-          normalizer: ({ data }) =>
-          data.allMarkdownRemark.nodes.map(node => ({
-              title: node.frontmatter.title,
-              excerpt: node.excerpt,
-              date: node.frontmatter.date,
-              slug: node.fields.slug,
-              body: node.rawMarkdownBody
-          })),      
-      }
-    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -202,6 +167,15 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
-    `gatsby-plugin-sass`
+    `gatsby-plugin-sass`,
+    {
+      // This plugin must be placed last in your list of plugins to ensure that it can query all the GraphQL data
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries: require("./src/utils/algolia-queries")
+      },
+    }
   ],
 }

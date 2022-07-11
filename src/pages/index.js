@@ -65,10 +65,6 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    localSearchPages {
-      index
-      store
-    }
     site {
       siteMetadata {
         title

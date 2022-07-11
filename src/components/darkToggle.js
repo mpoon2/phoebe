@@ -7,11 +7,11 @@ const DarkModeToggle = () => {
   const darkMode = useDarkMode(false);
 
   return (
-    <div>
+    <div className="px-2 py-2 rounded-md text-regular font-medium">
       <DarkModeSwitch
         checked={darkMode.value} 
         onChange={darkMode.toggle} 
-        size="1.25rem"
+        size="1rem"
         sunColor="var(--text-light)"
         moonColor="var(--text-dark)"
       />

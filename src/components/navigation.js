@@ -22,10 +22,10 @@ import { Disclosure } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
 const navigation = [
-  { name: 'Home', href: '/', current: false },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'academic', href: '/academic', current: false },
+  { name: 'journal', href: '/journal', current: false },
+  { name: 'personal', href: '/personal', current: false },
+  { name: 'ramblings', href: '/ramblings', current: false },
 ]
 
 function classNames(...classes) {
@@ -57,7 +57,7 @@ export default function Example() {
             <div className="relative flex items-center justify-between h-16">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -70,39 +70,40 @@ export default function Example() {
                 <div className="flex-shrink-0 flex items-center">
                   <Link to="/" className="flex">
                     <Icon 
-                      className="block lg:hidden h-6 w-auto my-auto brand-logo" 
+                      className="block md:hidden h-6 w-auto my-auto brand-logo" 
                     />
                     <Icon 
-                      className="hidden lg:block h-6 w-auto my-auto brand-logo"
+                      className="hidden md:block h-6 w-auto my-auto brand-logo"
                     />
                     <div className="site-title my-auto">
-                      <span className="title hidden lg:block px-1 py-0 font-bold text-lg leading-4">
+                      <span className="title hidden md:block px-1 py-0 font-bold text-lg leading-4">
                       {query.site.siteMetadata.title}
                       </span>
-                      <span className="subtitle hidden lg:block px-1 py-0 font-semibold text-xxs tracking-tight">
+                      <span className="subtitle hidden md:block px-1 py-0 font-semibold text-xxs tracking-tight">
                       {query.site.siteMetadata.subtitle}
                       </span>
                     </div>
                   </Link>
                 </div>
-                <div className="hidden sm:block sm:ml-6">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <Link
-                        to={item.href}
-                        className={classNames(
-                          'nav-item',
-                          'px-3 py-2 rounded-md text-sm font-medium'
-                        )}
-                        activeClassName="active-nav-item"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="hidden sm:block sm:ml-6">
+                  <div className="flex space-x-4">
+                      {navigation.map((item) => (
+                        <Link
+                          to={item.href}
+                          className={classNames(
+                            'nav-item',
+                            'px-3 py-2 rounded-md text-sm font-medium'
+                          )}
+                          activeClassName="active-nav-item"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
                 <DarkToggle />
 
                 {/* Profile dropdown */}
@@ -111,12 +112,12 @@ export default function Example() {
                 {/* After signing in, the user button will be visible */}
                 <SignedOut>
                   <SignInButton>
-                    <button className="btn" >
+                    <button className="px-2 py-2 rounded-md text-regular font-medium" >
                       <FontAwesomeIcon icon={faUserAstronaut} size="s" />
                     </button>
                   </SignInButton>
                 </SignedOut>
-                <button type="button" className="px-3 py-2 rounded-md text-sm font-medium" onClick={handleClick}>
+                <button type="button" className="px-2 py-2 rounded-md text-regular font-medium" onClick={handleClick}>
                   <FontAwesomeIcon icon={faMagnifyingGlass} size="s" />
                 </button>
               </div>

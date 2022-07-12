@@ -1,10 +1,5 @@
 import React from "react"
 import { connectSearchBox } from "react-instantsearch-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-import {
-    faMagnifyingGlass
-  } from '@fortawesome/free-solid-svg-icons'
 
 export default connectSearchBox(
     ({ refine, currentRefinement, className, onFocus }) => (

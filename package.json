@@ -26,7 +26,6 @@
     "babel-plugin-styled-components": "^2.0.7",
     "flexsearch": "^0.7.0",
     "gatsby": "^4.18.0",
-    "gatsby-plugin-algolia": "^0.26.0",
     "gatsby-plugin-clerk": "^2.0.0",
     "gatsby-plugin-feed": "^4.18.0",
     "gatsby-plugin-fontawesome-css": "^1.2.0",

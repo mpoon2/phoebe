@@ -17,7 +17,7 @@ import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter"
  *******************************************/
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
-    apiKey: "SBzfUIT13Mem2C9t7teYHDRs4IpLQ080", // Be sure to use the search-only-api-key
+    apiKey: process.env.TYPESENSE_API_SEARCH, // Be sure to use the search-only-api-key
     nodes: [
       {
         host: "typesense.mattycakes.ca",

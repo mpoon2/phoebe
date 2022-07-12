@@ -28,14 +28,25 @@ const BlogPostTemplate = ({ data, location }) => {
           itemScope
           itemType="http://schema.org/Article"
         >
-          <header>
-            <h1 itemProp="headline">{post.frontmatter.title}</h1>
-            <p>{post.frontmatter.date}</p>
+          <header className="metadata">
+            <h1 data-typesense-field="title" itemProp="headline" className="metadata-title">{post.frontmatter.title}</h1>
+            <p data-typesense-field="description" className="metadata-description">{post.frontmatter.description}</p>
+            {post.frontmatter.tags.map(tag => {
+              return (
+                <span data-typesense-field="tags" className="metadata-tag">
+                  {tag}
+                </span>
+              )
+            })}
+            <p data-typesense-field="date-created" className="metadata-date-created">{post.frontmatter.date}</p>
+            <p data-typesense-field="date-modified" className="metadata-date-modified">{post.frontmatter.modified}</p>
+            <p data-typesense-field="status" className="metadata-status">{post.frontmatter.status}</p>
           </header>
             <SignedIn>
               <section
                 dangerouslySetInnerHTML={{ __html: post.html }}
                 itemProp="articleBody"
+                data-typesense-field="raw-markdown-body"
               />
             </SignedIn>
             <SignedOut>
@@ -87,13 +98,24 @@ const BlogPostTemplate = ({ data, location }) => {
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header>
+        <header className="metadata">
+            <h1 data-typesense-field="title" itemProp="headline" className="metadata-title">{post.frontmatter.title}</h1>
+            <p data-typesense-field="description" className="metadata-description">{post.frontmatter.description}</p>
+            {post.frontmatter.tags.map(tag => {
+              return (
+                <span data-typesense-field="tags" className="metadata-tag">
+                  {tag}
+                </span>
+              )
+            })}
+            <p data-typesense-field="date-created" className="metadata-date-created">{post.frontmatter.date}</p>
+            <p data-typesense-field="date-modified" className="metadata-date-modified">{post.frontmatter.modified}</p>
+            <p data-typesense-field="status" className="metadata-status">{post.frontmatter.status}</p>
+          </header>
             <section
               dangerouslySetInnerHTML={{ __html: post.html }}
               itemProp="articleBody"
+              data-typesense-field="raw-markdown-body"
             />
         <hr />
         <footer>
@@ -150,7 +172,10 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        modified(formatString: "MMMM DD, YYYY")
         description
+        tags
+        status
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

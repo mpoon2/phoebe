@@ -76,9 +76,11 @@
     --active-link: var(--nord8);
     /* Light Mode */
     --text-light: var(--nord3);
+    --text-light-muted: var(--nord17);
     --body-light: var(--nord16);
     /* Dark Mode */
     --text-dark: var(--nord6);
+    --text-dark-muted: var(--nord3);
     --body-dark: var(--nord0);
     /* Replacement Colours */
     --red: var(--nord11);

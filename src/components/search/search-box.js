@@ -18,7 +18,6 @@ export default connectSearchBox(
                 value={currentRefinement}
                 onFocus={onFocus}
             />
-            <FontAwesomeIcon icon={faMagnifyingGlass} size="s" />
         </form>
     )
 )

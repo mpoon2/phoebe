@@ -15,7 +15,7 @@ import {
   faUserAstronaut,
   faMagnifyingGlass
 } from '@fortawesome/free-solid-svg-icons'
-import SearchModal from "../components/search-modal"
+import SearchModal from "../components/search/search-modal"
 
 /* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from '@headlessui/react'

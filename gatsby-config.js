@@ -177,6 +177,91 @@ module.exports = {
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         queries: require("./src/utils/algolia-queries")
       },
-    }
+    },
+    {
+      resolve: `gatsby-plugin-typesense`,
+      options: {
+        rootDir: `${__dirname}/public`, // Required
+        collectionSchema: { // Required
+          "name": "mattycakes",
+          "fields": [
+            {
+              "name": "title",
+              "type": "string",
+              "facet": false,
+              "optional": false,
+              "index": true
+            },
+            {
+              "name": "page_path",
+              "type": "string",
+              "facet": false,
+              "optional": false,
+              "index": true
+            },
+            {
+              "name": "page_priority_score",
+              "type": "int32",
+              "facet": false,
+              "optional": false,
+              "index": true
+            },
+            {
+              "name": "date-created",
+              "type": "string",
+              "facet": false,
+              "optional": true,
+              "index": true
+            },
+            {
+              "name": "date-modified",
+              "type": "string",
+              "facet": false,
+              "optional": true,
+              "index": true
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "facet": false,
+              "optional": true,
+              "index": true
+            },
+            {
+              "name": "tags",
+              "type": "string[]",
+              "facet": true,
+              "optional": true,
+              "index": true
+            },
+            {
+              "name": "status",
+              "type": "string",
+              "facet": false,
+              "optional": true,
+              "index": true
+            },
+            {
+              "name": "raw-markdown-body",
+              "type": "string",
+              "facet": false,
+              "optional": true,
+              "index": true
+            }
+          ],
+          "default_sorting_field": "page_priority_score"
+        },
+        server: { // Required
+          apiKey: process.env.TYPESENSE_API_ADMIN,
+          nodes: [
+            {
+              host: "typesense.mattycakes.ca",
+              port: "",
+              protocol: "https",
+            },
+          ],
+        },
+      },
+    },
   ],
 }

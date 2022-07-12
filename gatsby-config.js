@@ -170,15 +170,6 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-sass`,
     {
-      // This plugin must be placed last in your list of plugins to ensure that it can query all the GraphQL data
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        queries: require("./src/utils/algolia-queries")
-      },
-    },
-    {
       resolve: `gatsby-plugin-typesense`,
       options: {
         rootDir: `${__dirname}/public`, // Required

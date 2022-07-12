@@ -4,7 +4,6 @@ import {
   InstantSearch, 
   Hits, 
   Stats, 
-  Pagination ,
   Configure,
   Highlight,
   Snippet

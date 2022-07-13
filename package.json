@@ -71,6 +71,7 @@
     "react-use-flexsearch": "^0.1.1",
     "sass": "",
     "styled-components": "^5.3.5",
+    "twin.macro": "^2.8.2",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",
     "typesense-instantsearch-adapter": "^2.4.1",

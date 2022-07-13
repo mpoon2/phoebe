@@ -14,6 +14,18 @@ a:hover.nav-item {
   color: var(--nord6);
 }
 
+.mobile-nav-button:hover {
+  background-color: var(--text-light);
+}
+
+.mobile-nav-item {
+  color: var(--text-light);
+}
+
+.dark-mode .mobile-nav-item {
+  color: var(--text-dark);
+}
+
 /* Logo Fill Colours */
 
 svg.brand-logo {
@@ -47,4 +59,29 @@ svg.brand-logo {
 
 .cl-component.cl-user-button {
   height:1.25rem !important;
+}
+
+/* Search Modal */
+
+.modal-background {
+  background-color: var(--body-dark);
+  opacity: 90%;
+}
+
+.hit-description {
+  color: var(--text-light-muted);
+}
+
+/* Typesense logo colour */
+
+svg.typesense-logo {
+  g {
+      fill: var(--text-light);
+  }
+}
+
+.dark-mode svg.typesense-logo {
+  g {
+      fill: var(--text-dark);
+  }
 }

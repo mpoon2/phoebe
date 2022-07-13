@@ -9,7 +9,7 @@ const Layout = ({ location, title, children }) => {
     <div className="global-wrapper" data-is-root-path={isRootPath}>
       <Navigation />
       <main>
-        <div className="mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="max-w-screen-2xl mx-auto px-2 sm:px-6 lg:px-12">
         {children}
         </div>
       </main>

@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import SidebarPost from "../components/sidebar/sidebar-post"
 
 import { 
   SignedIn, 
@@ -23,40 +24,48 @@ const BlogPostTemplate = ({ data, location }) => {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <article
-          className="blog-post"
-          itemScope
-          itemType="http://schema.org/Article"
-        >
-          <header className="metadata">
-            <h1 data-typesense-field="title" itemProp="headline" className="metadata-title">{post.frontmatter.title}</h1>
-            <p data-typesense-field="description" className="metadata-description">{post.frontmatter.description}</p>
-            {post.frontmatter.tags.map(tag => {
-              return (
-                <span data-typesense-field="tags" className="metadata-tag">
-                  {tag}
-                </span>
-              )
-            })}
-            <p data-typesense-field="date-created" className="metadata-date-created">{post.frontmatter.date}</p>
-            <p data-typesense-field="date-modified" className="metadata-date-modified">{post.frontmatter.modified}</p>
-            <p data-typesense-field="status" className="metadata-status">{post.frontmatter.status}</p>
-          </header>
-            <SignedIn>
+        <div className="flex">
+          <SidebarPost />
+          <article
+            className="blog-post"
+            itemScope
+            itemType="http://schema.org/Article"
+          >
+            <header className="metadata">
+              <h1 data-typesense-field="title" itemProp="headline" className="metadata-title">{post.frontmatter.title}</h1>
+              <p data-typesense-field="description" className="metadata-description">{post.frontmatter.description}</p>
+              {post.frontmatter.tags.map(tag => {
+                return (
+                  <span data-typesense-field="tags" className="metadata-tag">
+                    {tag}
+                  </span>
+                )
+              })}
+              <p data-typesense-field="date-created" className="metadata-date-created">{post.frontmatter.date}</p>
+              <p data-typesense-field="date-modified" className="metadata-date-modified">{post.frontmatter.modified}</p>
+              <p data-typesense-field="status" className="metadata-status">{post.frontmatter.status}</p>
+            </header>
+            <div className="hidden">
               <section
                 dangerouslySetInnerHTML={{ __html: post.html }}
                 itemProp="articleBody"
                 data-typesense-field="raw-markdown-body"
               />
-            </SignedIn>
-            <SignedOut>
-              <p>Content is private and only viewable to mattycakes.</p> <SignInButton />
-            </SignedOut>
-          <hr />
-          <footer>
-            <Bio />
-          </footer>
-        </article>
+            </div>
+              <SignedIn>
+                <section
+                  dangerouslySetInnerHTML={{ __html: post.html }}
+                  itemProp="articleBody"
+                />
+              </SignedIn>
+              <SignedOut>
+                <p>Content is private and only viewable to mattycakes.</p> <SignInButton />
+              </SignedOut>
+            <hr />
+            <footer>
+              <Bio />
+            </footer>
+          </article>
         <nav className="blog-post-nav">
           <ul
             style={{
@@ -83,6 +92,7 @@ const BlogPostTemplate = ({ data, location }) => {
             </li>
           </ul>
         </nav>
+        </div>
       </Layout>
     )
   }
@@ -93,6 +103,8 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
+      <div className="flex">
+      <SidebarPost />
       <article
         className="blog-post"
         itemScope
@@ -148,6 +160,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </li>
         </ul>
       </nav>
+      </div>
     </Layout>
   )
 }

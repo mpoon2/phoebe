@@ -6,25 +6,19 @@ import {
   UserButton,
   SignInButton,
 } from "@clerk/clerk-react";
-
 import Icon from "./logo.inline.svg";
-import DarkToggle from "./darkToggle"
-import "./navigation.scss"
+import DarkToggle from "./dark-toggle"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faUserAstronaut,
   faMagnifyingGlass
 } from '@fortawesome/free-solid-svg-icons'
-
-/* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
-
 import Search from "./search/search-simple"
 import Icon2 from "./search/typesense.inline.svg";
-
-/* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useRef, useState } from 'react'
+import { Fragment } from 'react'
+import "./navigation.scss"
 import { Dialog, Transition } from '@headlessui/react'
 
 const navigation = [
@@ -38,7 +32,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Navbar() {
 
   const [isOpen, setOpen] = React.useState(false);
   const handleClick = () => {
@@ -60,11 +54,11 @@ export default function Example() {
     <Disclosure as="nav" className="nav">
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="max-w-screen-2xl mx-auto px-2 sm:px-6 lg:px-12">
             <div className="relative flex items-center justify-between h-16">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="mobile-nav-button inline-flex items-center justify-center p-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -131,7 +125,7 @@ export default function Example() {
             </div>
           </div>
 
-          {/* Search */}
+          {/* SEARCH MODAL */}
           {isOpen && 
               <><div>
               <Transition.Root show={isOpen} as={Fragment}>
@@ -145,10 +139,10 @@ export default function Example() {
                           leaveFrom="opacity-100"
                           leaveTo="opacity-0"
                       >
-                          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+                          <div className="modal-background fixed inset-0 bg-opacity-75 transition-opacity" />
                       </Transition.Child>
                       <div className="fixed z-10 inset-0 overflow-y-auto">
-                          <div className="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+                          <div className="flex items-end sm:items-center justify-center max-h-full p-0 text-center xl:p-8">
                               <Transition.Child
                                   as={Fragment}
                                   enter="ease-out duration-300"
@@ -158,7 +152,7 @@ export default function Example() {
                                   leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                                   leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                               >
-                                  <Dialog.Panel className="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                                  <Dialog.Panel className="relative bg-white text-left overflow-hidden shadow-xl transform transition-all w-full xl:rounded">
                                       <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                       <Search />
                                       </div>
@@ -186,7 +180,7 @@ export default function Example() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    item.current ? 'bg-gray-900 text-white mobile-nav-item-active' : 'mobile-nav-item hover:bg-gray-700 hover:text-white',
                     'block px-3 py-2 rounded-md text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}

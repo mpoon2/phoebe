@@ -14,6 +14,7 @@ module.exports = {
     siteUrl: `https://mattycakes.ca/`,
   },
   plugins: [
+    `gatsby-plugin-emotion`,
     `gatsby-plugin-fontawesome-css`,
     {
       resolve: 'gatsby-plugin-clerk',

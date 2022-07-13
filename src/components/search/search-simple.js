@@ -79,7 +79,7 @@ export default function SearchInterface() {
   return (
       <InstantSearch searchClient={searchClient} indexName="mattycakes">
         <Configure hitsPerPage={10} />
-        <SearchBox autoFocus />
+        <SearchBox className="search-box flex" autoFocus />
         <Hits hitComponent={Hit} />
         <Stats className="text-sm" />
       </InstantSearch>

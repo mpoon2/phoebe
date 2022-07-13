@@ -51,7 +51,7 @@ export default function Navbar() {
   `)
 
   return (
-    <Disclosure as="nav" className="nav">
+    <Disclosure as="nav" className="nav sticky top-0 z-10 w-full backdrop-blur">
       {({ open }) => (
         <>
           <div className="max-w-screen-2xl mx-auto px-2 sm:px-6 lg:px-12">
@@ -141,8 +141,8 @@ export default function Navbar() {
                       >
                           <div className="modal-background fixed inset-0 bg-opacity-75 transition-opacity" />
                       </Transition.Child>
-                      <div className="fixed z-10 inset-0 overflow-y-auto">
-                          <div className="flex items-end sm:items-center justify-center max-h-full p-0 text-center xl:p-8">
+                      <div className="fixed z-50 inset-0 overflow-y-auto backdrop-blur-md">
+                          <div className="flex items-end sm:items-center justify-center max-h-full p-0 text-center lg:p-8">
                               <Transition.Child
                                   as={Fragment}
                                   enter="ease-out duration-300"
@@ -152,7 +152,7 @@ export default function Navbar() {
                                   leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                                   leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                               >
-                                  <Dialog.Panel className="relative bg-white text-left overflow-hidden shadow-xl transform transition-all w-full xl:rounded">
+                                  <Dialog.Panel className="relative bg-white text-left overflow-hidden shadow-xl transform transition-all w-full lg:rounded">
                                       <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                       <Search />
                                       </div>

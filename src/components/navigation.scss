@@ -1,3 +1,9 @@
+/* Sticky Header */
+
+nav.nav {
+  background-color: var(--nav-light);
+}
+
 /* Nav Item Styling */
 
 .active-nav-item {
@@ -64,8 +70,6 @@ svg.brand-logo {
 /* Search Modal */
 
 .modal-background {
-  background-color: var(--body-dark);
-  opacity: 90%;
 }
 
 .hit-description {

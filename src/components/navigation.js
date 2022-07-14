@@ -1,53 +1,50 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import { useStaticQuery, graphql } from 'gatsby'
-import {
-  SignedOut,
-  UserButton,
-  SignInButton,
-} from "@clerk/clerk-react";
-import Icon from "./logo.inline.svg";
+import React from "react"
+import { Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
+import { SignedOut, UserButton, SignInButton } from "@clerk/clerk-react"
+import Icon from "./logo.inline.svg"
 import DarkToggle from "./dark-toggle"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faUserAstronaut,
-  faMagnifyingGlass
-} from '@fortawesome/free-solid-svg-icons'
-import { Disclosure } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons"
+import { Disclosure } from "@headlessui/react"
+import { MenuIcon, XIcon } from "@heroicons/react/outline"
 import Search from "./search/search-simple"
-import Icon2 from "./search/typesense.inline.svg";
-import { Fragment } from 'react'
+import Icon2 from "./search/typesense.inline.svg"
+import { Fragment } from "react"
 import "./navigation.scss"
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, Transition } from "@headlessui/react"
+import { useHotkeys } from "react-hotkeys-hook"
 
 const navigation = [
-  { name: 'academic', href: '/academic', current: false },
-  { name: 'journal', href: '/journal', current: false },
-  { name: 'personal', href: '/personal', current: false },
-  { name: 'ramblings', href: '/ramblings', current: false },
+  { name: "academic", href: "/academic", current: false },
+  { name: "journal", href: "/journal", current: false },
+  { name: "personal", href: "/personal", current: false },
+  { name: "ramblings", href: "/ramblings", current: false },
 ]
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ")
 }
 
 export default function Navbar() {
-
-  const [isOpen, setOpen] = React.useState(false);
+  const [isOpen, setOpen] = React.useState(false)
   const handleClick = () => {
-    setOpen(!isOpen);
-  };
+    setOpen(!isOpen)
+  }
+  useHotkeys("cmd+k", () => setOpen(value => !value))
 
   const query = useStaticQuery(graphql`
-      query SITE_TITLE {
-          site {
-              siteMetadata {
-                  title
-                  subtitle
-              }
-          }
+    query SITE_TITLE {
+      site {
+        siteMetadata {
+          title
+          subtitle
+        }
       }
+    }
   `)
 
   return (
@@ -70,120 +67,69 @@ export default function Navbar() {
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <Link to="/" className="flex">
-                    <Icon 
-                      className="block md:hidden h-6 w-auto my-auto brand-logo" 
-                    />
-                    <Icon 
-                      className="hidden md:block h-6 w-auto my-auto brand-logo"
-                    />
+                    <Icon className="block md:hidden h-6 w-auto my-auto brand-logo" />
+                    <Icon className="hidden md:block h-6 w-auto my-auto brand-logo" />
                     <div className="site-title my-auto">
                       <span className="title hidden md:block px-1 py-0 font-bold text-lg leading-4">
-                      {query.site.siteMetadata.title}
+                        {query.site.siteMetadata.title}
                       </span>
                       <span className="subtitle hidden md:block px-1 py-0 font-semibold text-xxs tracking-tight">
-                      {query.site.siteMetadata.subtitle}
+                        {query.site.siteMetadata.subtitle}
                       </span>
                     </div>
                   </Link>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <div className="hidden sm:block sm:ml-6">
+                <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
-                      {navigation.map((item) => (
-                        <Link
-                          to={item.href}
-                          className={classNames(
-                            'nav-item',
-                            'px-3 py-2 rounded-md text-sm font-medium'
-                          )}
-                          activeClassName="active-nav-item"
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
+                    {navigation.map(item => (
+                      <Link
+                        to={item.href}
+                        className={classNames(
+                          "nav-item",
+                          "px-3 py-2 rounded-md text-sm font-medium"
+                        )}
+                        activeClassName="active-nav-item"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
                   </div>
-
+                </div>
+                {/* Dark Mode Toggle */}
                 <DarkToggle />
-
                 {/* Profile dropdown */}
                 <UserButton />
                 {/* If the user is signed out, show the SignIn component */}
                 {/* After signing in, the user button will be visible */}
                 <SignedOut>
                   <SignInButton>
-                    <button className="px-2 py-2 rounded-md text-regular font-medium" >
+                    <button className="px-2 py-2 rounded-md text-regular font-medium">
                       <FontAwesomeIcon icon={faUserAstronaut} size="s" />
                     </button>
                   </SignInButton>
                 </SignedOut>
-                <button type="button" className="px-2 py-2 rounded-md text-regular font-medium" onClick={handleClick}>
-                  <FontAwesomeIcon icon={faMagnifyingGlass} size="s" />
-                </button>
+                {/* Search toggle */}
+                <Search />
               </div>
             </div>
           </div>
 
-          {/* SEARCH MODAL */}
-          {isOpen && 
-              <><div>
-              <Transition.Root show={isOpen} as={Fragment}>
-                  <Dialog as="div" className="relative z-10" onClose={setOpen}>
-                      <Transition.Child
-                          as={Fragment}
-                          enter="ease-out duration-300"
-                          enterFrom="opacity-0"
-                          enterTo="opacity-100"
-                          leave="ease-in duration-200"
-                          leaveFrom="opacity-100"
-                          leaveTo="opacity-0"
-                      >
-                          <div className="modal-background fixed inset-0 bg-opacity-75 transition-opacity" />
-                      </Transition.Child>
-                      <div className="fixed z-50 inset-0 overflow-y-auto backdrop-blur-md">
-                          <div className="flex items-end sm:items-center justify-center max-h-full p-0 text-center lg:p-8">
-                              <Transition.Child
-                                  as={Fragment}
-                                  enter="ease-out duration-300"
-                                  enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                  enterTo="opacity-100 translate-y-0 sm:scale-100"
-                                  leave="ease-in duration-200"
-                                  leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                                  leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                              >
-                                  <Dialog.Panel className="relative bg-white text-left overflow-hidden shadow-xl transform transition-all w-full lg:rounded">
-                                      <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                      <Search />
-                                      </div>
-                                      <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                        <p className="text-sm">
-                                            Search self-hosted and free using
-                                            <Icon2 className="inline px-1 h-4 w-auto my-auto typesense-logo" />
-                                        </p>
-                                      </div>
-                                  </Dialog.Panel>
-                              </Transition.Child>
-                          </div>
-                      </div>
-                  </Dialog>
-              </Transition.Root>
-          </div>
-          </>
-          }
-
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
+              {navigation.map(item => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white mobile-nav-item-active' : 'mobile-nav-item hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
+                    item.current
+                      ? "bg-gray-900 text-white mobile-nav-item-active"
+                      : "mobile-nav-item hover:bg-gray-700 hover:text-white",
+                    "block px-3 py-2 rounded-md text-base font-medium"
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>

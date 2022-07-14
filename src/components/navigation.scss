@@ -3,6 +3,9 @@
 nav.nav {
   background-color: var(--nav-light);
 }
+.dark-mode nav.nav {
+  background-color: var(--nav-dark);
+}
 
 /* Nav Item Styling */
 
@@ -54,17 +57,17 @@ svg.brand-logo {
 
 /* User Button */
 
-.cl-component .cl-user-button-trigger>.cl-user-button-avatar {
+.cl-component .cl-user-button-trigger > .cl-user-button-avatar {
   border-radius: 4px !important;
 }
 
 .cl-component .cl-user-button-trigger {
-  width:1.25rem !important;
-  height:1.25rem !important;
+  width: 1.25rem !important;
+  height: 1.25rem !important;
 }
 
 .cl-component.cl-user-button {
-  height:1.25rem !important;
+  height: 1.25rem !important;
 }
 
 /* Search Modal */
@@ -80,12 +83,12 @@ svg.brand-logo {
 
 svg.typesense-logo {
   g {
-      fill: var(--text-light);
+    fill: var(--text-light);
   }
 }
 
 .dark-mode svg.typesense-logo {
   g {
-      fill: var(--text-dark);
+    fill: var(--text-dark);
   }
 }

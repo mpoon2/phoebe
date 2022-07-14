@@ -1,0 +1,25 @@
+.aa-Panel {
+  z-index: 40 !important;
+}
+
+// force cursor to pointer, else auto style is set
+.aa-DetachedSearchButtonIcon {
+  cursor: pointer;
+}
+
+// force button background to light and dark body
+.aa-DetachedSearchButton {
+  background-color: var(--body-light);
+  border: 0;
+  padding: 0.5rem;
+}
+
+.aa-SubmitIcon {
+  height: 20px !important;
+  width: 20px !important;
+  fill: var(--text-light);
+}
+.aa-DetachedSearchButtonIcon {
+  height: 20px !important;
+  width: 20px !important;
+}

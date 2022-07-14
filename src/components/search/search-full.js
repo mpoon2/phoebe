@@ -2,10 +2,15 @@ import * as React from "react"
 import { Link } from "gatsby"
 import {
   InstantSearch,
+  Hits,
+  Stats,
+  Configure,
   Highlight,
   Snippet,
+  connectStateResults,
   connectSearchBox,
 } from "react-instantsearch-dom"
+import SearchBox from "./search-box"
 import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter"
 import { Autocomplete } from "./search-autocomplete"
 import qs from "qs"
@@ -107,6 +112,29 @@ export default function SearchInterface() {
     }, 400)
   }, [searchState])
 
+  const Results = connectStateResults(
+    ({ searchState, searchResults, children }) =>
+      searchState && searchState.query ? children : null
+  )
+
+  const onSubmit = React.useCallback(({ state }) => {
+    setSearchState(searchState => ({
+      ...searchState,
+      query: state.query,
+    }))
+  }, [])
+
+  const onReset = React.useCallback(() => {
+    setSearchState(searchState => ({
+      ...searchState,
+      query: "",
+    }))
+  }, [])
+
+  const plugins = React.useMemo(() => {
+    return [] // add more plugins here
+  }, [])
+
   function Hit(props) {
     return (
       <div>
@@ -155,18 +183,9 @@ export default function SearchInterface() {
       createURL={createURL}
     >
       <VirtualSearchBox />
-
+      <Configure hitsPerPage={10} />
+      <SearchBox className="search-box flex" autoFocus />
       <Autocomplete
-        classNames={{
-          detachedOverlay: "backdrop-blur-md",
-          detachedSearchButtonIcon: "cursor-pointer",
-          detachedSearchButton:
-            "cursor-pointer px-2 py-2 rounded-md text-regular font-medium",
-          detachedSearchButtonPlaceholder: "hidden",
-        }}
-        placeholder="test"
-        detachedMediaQuery=""
-        autoFocus
         navigator={{
           navigate({ itemUrl }) {
             navigate(itemUrl)
@@ -207,6 +226,10 @@ export default function SearchInterface() {
           },
         ]}
       />
+      <Results>
+        <Stats className="text-sm" />
+        <Hits hitComponent={Hit} />
+      </Results>
     </InstantSearch>
   )
 }

@@ -1,6 +1,6 @@
 /* HTML Elements */
 
 body.dark-mode {
-    background-color: var(--body-dark);
-    color: var(--text-dark)
+  background-color: var(--body-dark);
+  color: var(--text-dark);
 }

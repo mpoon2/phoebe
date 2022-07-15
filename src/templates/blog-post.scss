@@ -1,0 +1,17 @@
+.article-body {
+  display: flex;
+  height: calc(100vh - 152px);
+}
+
+.left-sidebar {
+  flex: 0 16rem;
+}
+
+.right-sidebar {
+  flex: 0 16rem;
+}
+
+section {
+  flex: 1;
+  overflow: auto;
+}

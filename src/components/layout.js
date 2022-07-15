@@ -28,11 +28,11 @@ const Layout = ({ location, title, children }) => {
     <div className="global-wrapper" data-is-root-path={isRootPath}>
       <Navigation />
       <main>
-        <div className="max-w-screen-2xl mx-auto px-2 sm:px-6 lg:px-12">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12">
           {children}
         </div>
       </main>
-      <footer className="max-w-screen-2xl mx-auto px-2 sm:px-6 lg:px-12">
+      <footer className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12">
         <p className="text-center text-sm">
           <span className="font-medium">
             © {new Date().getFullYear()}

@@ -14,6 +14,15 @@ module.exports = {
     siteUrl: `https://mattycakes.ca/`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-build-date`,
+      options: {
+        formatAsDateString: true, // boolean, defaults to true - if false API will return unformatted string from new Date()
+        formatting: {
+          format: "dddd D MMMM YYYY @ h:mm:ss A", // string, defaults to "MM/DD/YYYY" - pass in any acceptable date-and-time format
+        },
+      },
+    },
     `gatsby-plugin-emotion`,
     `gatsby-plugin-fontawesome-css`,
     {

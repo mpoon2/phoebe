@@ -1,0 +1,13 @@
+svg.footer-logo {
+  fill: var(--text-light);
+}
+.dark-mode svg.footer-logo {
+  fill: var(--text-dark);
+}
+
+.build-stamp {
+  color: var(--text-light-muted);
+}
+.dark-mode .build-stamp {
+  color: var(--text-dark-muted);
+}

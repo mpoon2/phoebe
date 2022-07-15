@@ -8,7 +8,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import SidebarTOC from "../components/sidebar/sidebar-outline"
-import "../components/sidebar/sidebar.scss"
+import SidebarNav from "../components/sidebar/sidebar-navigation"
 import "./blog-post.scss"
 
 const BlogPostTemplate = ({ data, location }) => {
@@ -23,25 +23,12 @@ const BlogPostTemplate = ({ data, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <div class="article-body">
-        <nav class="left-sidebar hidden lg:block" role="navigation">
-          <ul>
-            <li>
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="#">Clients</a>
-            </li>
-            <li>
-              <a href="#">Contact Us</a>
-            </li>
-          </ul>
+        <nav class="left-sidebar hidden lg:block pr-4" role="navigation">
+          <SidebarNav location={location} />
         </nav>
         <section>
           <article
-            className="blog-post max-w-screen-sm md:max-w-screen-lg"
+            className="blog-post p-0 lg:pl-4 xl:pr-4 lg:pr-2"
             itemScope
             itemType="http://schema.org/Article"
           >
@@ -119,7 +106,7 @@ const BlogPostTemplate = ({ data, location }) => {
             </footer>
           </article>
         </section>
-        <nav class="right-sidebar hidden xl:block" role="navigation">
+        <nav class="right-sidebar hidden xl:block pl-4" role="navigation">
           <SidebarTOC headings={post.headings} />
         </nav>
       </div>

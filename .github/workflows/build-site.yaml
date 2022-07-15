@@ -7,6 +7,6 @@ jobs:
   curl:
     runs-on: ubuntu-latest
     steps:
-    - name: cURL Webhook
-      run: |
-        curl https://webhook.mattycakes.ca/hooks/buildSource
+      - name: cURL Webhook
+        run: |
+          curl https://webhook.mattycakes.ca/hooks/build-phoebe

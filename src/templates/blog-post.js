@@ -183,7 +183,7 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <div className="block">
+      <div className="flex flex-row">
         <div className="sidebar-div flex">
           <animated.div
             className="sidebar hidden md:block"

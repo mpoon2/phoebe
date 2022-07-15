@@ -33,5 +33,5 @@ export function Autocomplete(props) {
     }
   }, [props])
 
-  return <div className="test" ref={containerRef} />
+  return <div className="autocomplete-toggle" ref={containerRef} />
 }

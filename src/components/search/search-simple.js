@@ -179,6 +179,7 @@ export default function SearchInterface() {
 
       <Autocomplete
         classNames={{
+          input: "autocomplete-input",
           detachedOverlay: "backdrop-blur-md",
           detachedSearchButtonIcon: "cursor-pointer",
           detachedSearchButton:

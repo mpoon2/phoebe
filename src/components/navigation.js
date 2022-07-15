@@ -99,6 +99,8 @@ export default function Navbar() {
                 </div>
                 {/* Dark Mode Toggle */}
                 <DarkToggle />
+                {/* Search toggle */}
+                <Search />
                 {/* Profile dropdown */}
                 <UserButton />
                 {/* If the user is signed out, show the SignIn component */}
@@ -110,8 +112,6 @@ export default function Navbar() {
                     </button>
                   </SignInButton>
                 </SignedOut>
-                {/* Search toggle */}
-                <Search />
               </div>
             </div>
           </div>

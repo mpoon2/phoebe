@@ -89,9 +89,11 @@ function urlToSearchState({ search }) {
  * END: Required for Autocomplete *
  ***********************************/
 
+const isBrowser = () => typeof window !== "undefined"
+
 export default function SearchInterface() {
-  const [searchState, setSearchState] = React.useState(() =>
-    urlToSearchState(window.location)
+  const [searchState, setSearchState] = React.useState(
+    () => isBrowser() && urlToSearchState(window.location)
   )
   const timerRef = React.useRef(null)
 
@@ -99,11 +101,13 @@ export default function SearchInterface() {
     clearTimeout(timerRef.current)
 
     timerRef.current = setTimeout(() => {
-      window.history.pushState(
-        searchState,
-        null,
-        searchStateToUrl({ location: window.location }, searchState)
-      )
+      isBrowser() &&
+        window.history.pushState(
+          searchState,
+          null,
+          isBrowser() &&
+            searchStateToUrl({ location: window.location }, searchState)
+        )
     }, 400)
   }, [searchState])
 

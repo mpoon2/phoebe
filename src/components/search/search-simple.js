@@ -9,7 +9,6 @@ import {
 import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter"
 import { Autocomplete } from "./search-autocomplete"
 import qs from "qs"
-import "@algolia/autocomplete-theme-classic/dist/theme.css"
 import SearchResult from "./search-result"
 import Typesense from "typesense"
 import { SearchResponseAdapter } from "typesense-instantsearch-adapter/lib/SearchResponseAdapter"
@@ -111,6 +110,24 @@ export default function SearchInterface() {
     }, 400)
   }, [searchState])
 
+  const onSubmit = React.useCallback(({ state }) => {
+    setSearchState(searchState => ({
+      ...searchState,
+      query: state.query,
+    }))
+  }, [])
+
+  const onReset = React.useCallback(() => {
+    setSearchState(searchState => ({
+      ...searchState,
+      query: "",
+    }))
+  }, [])
+
+  const plugins = React.useMemo(() => {
+    return [] // add more plugins here
+  }, [])
+
   function Hit(props) {
     return (
       <div>
@@ -171,6 +188,9 @@ export default function SearchInterface() {
         placeholder="test"
         detachedMediaQuery=""
         autoFocus
+        onSubmit={onSubmit}
+        onReset={onReset}
+        plugins={plugins}
         navigator={{
           navigate({ itemUrl }) {
             navigate(itemUrl)
@@ -192,6 +212,7 @@ export default function SearchInterface() {
                 .search({
                   q: query,
                   query_by: "title, description, raw-markdown-body, tags",
+                  group_by: "tags",
                   highlight_start_tag: "__aa-highlight__", // <===== Customize highlight tags
                   highlight_end_tag: "__/aa-highlight__", // <===== Customize highlight tags
                   highlight_fields:
@@ -199,6 +220,8 @@ export default function SearchInterface() {
                   highlight_affix_num_tokens: 8,
                   highlight_full_fields: "title, description, tags",
                   exhaustive_search: true,
+                  typoTolerance: true,
+                  ignorePlurals: true,
                 })
                 .then(result => {
                   return search_response_adapter(result).adapt().hits

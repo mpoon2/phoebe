@@ -8,6 +8,13 @@ export default function ResultItem({ hit, components }) {
         <div className="aa-ItemTitle">
           <components.Snippet tagName="mark" hit={hit} attribute="title" />
         </div>
+        <div className="aa-ItemTitle">
+          <components.Snippet
+            tagName="mark"
+            hit={hit}
+            attribute="raw-markdown-body"
+          />
+        </div>
       </div>
     </Link>
   )

@@ -17,27 +17,30 @@ module.exports = {
     `gatsby-plugin-emotion`,
     `gatsby-plugin-fontawesome-css`,
     {
-      resolve: 'gatsby-plugin-clerk',
+      resolve: "gatsby-plugin-clerk",
       options: {
         frontendApi: process.env.API_KEY,
-        }
+      },
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ['Inter:300,400,500,600,700,800,900','Fira Code:300,400,500,600,700']
-        }
-      }
+          families: [
+            "Inter:300,400,500,600,700,800,900",
+            "Fira Code:300,400,500,600,700",
+          ],
+        },
+      },
     },
-    'gatsby-plugin-use-dark-mode',
+    "gatsby-plugin-use-dark-mode",
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /\.inline\.svg$/
-        }
-      }
+          include: /\.inline\.svg$/,
+        },
+      },
     },
     `gatsby-plugin-image`,
     {
@@ -71,17 +74,17 @@ module.exports = {
             },
           },
           {
-            resolve:`gatsby-remark-autolink-headers`,
+            resolve: `gatsby-remark-autolink-headers`,
             options: {
-              isIconAfterHeader:true,
-            }
+              isIconAfterHeader: true,
+            },
           },
           {
             resolve: `gatsby-remark-katex`,
             options: {
               // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-              strict: `ignore`
-            }
+              strict: `ignore`,
+            },
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
@@ -173,77 +176,82 @@ module.exports = {
     {
       resolve: `gatsby-plugin-typesense`,
       options: {
+        attributeForDistinct: "tags",
+        distinct: true,
+        group_by: "tags",
         rootDir: `${__dirname}/public`, // Required
-        collectionSchema: { // Required
-          "name": "mattycakes",
-          "fields": [
+        collectionSchema: {
+          // Required
+          name: "mattycakes",
+          fields: [
             {
-              "name": "title",
-              "type": "string",
-              "facet": false,
-              "optional": false,
-              "index": true
+              name: "title",
+              type: "string",
+              facet: false,
+              optional: false,
+              index: true,
             },
             {
-              "name": "page_path",
-              "type": "string",
-              "facet": false,
-              "optional": false,
-              "index": true
+              name: "page_path",
+              type: "string",
+              facet: false,
+              optional: false,
+              index: true,
             },
             {
-              "name": "page_priority_score",
-              "type": "int32",
-              "facet": false,
-              "optional": false,
-              "index": true
+              name: "page_priority_score",
+              type: "int32",
+              facet: false,
+              optional: false,
+              index: true,
             },
             {
-              "name": "date-created",
-              "type": "string",
-              "facet": false,
-              "optional": true,
-              "index": true
+              name: "date-created",
+              type: "string",
+              facet: false,
+              optional: true,
+              index: true,
             },
             {
-              "name": "date-modified",
-              "type": "string",
-              "facet": false,
-              "optional": true,
-              "index": true
+              name: "date-modified",
+              type: "string",
+              facet: false,
+              optional: true,
+              index: true,
             },
             {
-              "name": "description",
-              "type": "string",
-              "facet": false,
-              "optional": true,
-              "index": true
+              name: "description",
+              type: "string",
+              facet: false,
+              optional: true,
+              index: true,
             },
             {
-              "name": "tags",
-              "type": "string[]",
-              "facet": true,
-              "optional": true,
-              "index": true
+              name: "tags",
+              type: "string[]",
+              facet: true,
+              optional: true,
+              index: true,
             },
             {
-              "name": "status",
-              "type": "string",
-              "facet": false,
-              "optional": true,
-              "index": true
+              name: "status",
+              type: "string",
+              facet: false,
+              optional: true,
+              index: true,
             },
             {
-              "name": "raw-markdown-body",
-              "type": "string",
-              "facet": false,
-              "optional": true,
-              "index": true
-            }
+              name: "raw-markdown-body",
+              type: "string",
+              facet: false,
+              optional: true,
+              index: true,
+            },
           ],
-          "default_sorting_field": "page_priority_score"
+          default_sorting_field: "page_priority_score",
         },
-        server: { // Required
+        server: {
+          // Required
           apiKey: process.env.TYPESENSE_API_ADMIN,
           nodes: [
             {

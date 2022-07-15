@@ -28,7 +28,7 @@
     "algoliasearch": "^4.13.1",
     "babel-plugin-styled-components": "^2.0.7",
     "flexsearch": "^0.7.0",
-    "gatsby": "^4.13.1",
+    "gatsby": "^4.18.0",
     "gatsby-plugin-clerk": "^2.0.0",
     "gatsby-plugin-emotion": "^7.18.0",
     "gatsby-plugin-feed": "^4.18.0",

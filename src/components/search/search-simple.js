@@ -1,12 +1,5 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import {
-  InstantSearch,
-  Highlight,
-  Snippet,
-  connectSearchBox,
-} from "react-instantsearch-dom"
-import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter"
+import { InstantSearch, connectSearchBox } from "react-instantsearch-dom"
 import { Autocomplete } from "./search-autocomplete"
 import qs from "qs"
 import SearchResult from "./search-result"
@@ -16,57 +9,8 @@ import "@algolia/autocomplete-theme-classic"
 import "./search-simple.scss"
 import { navigate } from "gatsby"
 
-/********************************************
- * BEGIN: Required for Typesense Connection *
- *******************************************/
-const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
-  server: {
-    apiKey: process.env.TYPESENSE_API_SEARCH, // Be sure to use the search-only-api-key
-    nodes: [
-      {
-        host: "typesense.mattycakes.ca",
-        port: "",
-        protocol: "https",
-      },
-    ],
-  },
-  // The following parameters are directly passed to Typesense's search API endpoint.
-  //  So you can pass any parameters supported by the search endpoint below.
-  //  queryBy is required.
-  additionalSearchParameters: {
-    queryBy: "title, description, raw-markdown-body, tags",
-    exhaustive_search: true,
-    highlight_fields: "title, description, raw-markdown-body, tags",
-    highlight_affix_num_tokens: 8,
-    highlight_full_fields: "title, description, tags",
-  },
-})
-const searchStageClient = typesenseInstantsearchAdapter.searchClient
-const searchClient = {
-  ...searchStageClient,
-  search(requests) {
-    if (requests.every(({ params }) => !params.query)) {
-      return Promise.resolve({
-        results: requests.map(() => ({
-          hits: [],
-          nbHits: 0,
-          nbPages: 0,
-          page: 0,
-          processingTimeMS: 0,
-        })),
-      })
-    }
-
-    return searchStageClient.search(requests)
-  },
-}
-/******************************************
- * END: Required for Typesense Connection *
- *****************************************/
-
-/************************************
- * BEGIN: Required for Autocomplete *
- ***********************************/
+/** BEGIN: Required for Autocomplete
+ */
 const VirtualSearchBox = connectSearchBox(() => null)
 
 function createURL(searchState) {
@@ -84,18 +28,17 @@ function searchStateToUrl({ location }, searchState) {
 function urlToSearchState({ search }) {
   return qs.parse(search.slice(1))
 }
-/************************************
- * END: Required for Autocomplete *
- ***********************************/
-
-const isBrowser = () => typeof window !== "undefined"
+/** END: Required for Autocomplete
+ */
 
 export default function SearchInterface() {
+  /** BEGIN: Required for Autocomplete
+   */
+  const isBrowser = () => typeof window !== "undefined"
   const [searchState, setSearchState] = React.useState(
     () => isBrowser() && urlToSearchState(window.location)
   )
   const timerRef = React.useRef(null)
-
   React.useEffect(() => {
     clearTimeout(timerRef.current)
 
@@ -109,53 +52,30 @@ export default function SearchInterface() {
         )
     }, 400)
   }, [searchState])
-
   const onSubmit = React.useCallback(({ state }) => {
     setSearchState(searchState => ({
       ...searchState,
       query: state.query,
     }))
   }, [])
-
   const onReset = React.useCallback(() => {
     setSearchState(searchState => ({
       ...searchState,
       query: "",
     }))
   }, [])
-
   const plugins = React.useMemo(() => {
     return [] // add more plugins here
   }, [])
-
-  function Hit(props) {
-    return (
-      <div>
-        <Link to={props.hit.page_path}>
-          <div className="hit-title font-bold">
-            <Highlight attribute="title" hit={props.hit} tagName="mark" />
-          </div>
-          <div className="hit-raw-markdown-body">
-            <Snippet
-              attribute="raw-markdown-body"
-              hit={props.hit}
-              tagName="mark"
-            />
-          </div>
-        </Link>
-      </div>
-    )
-  }
   const search_response_adapter = result =>
     new SearchResponseAdapter(
       result,
       { params: {} },
       { geoLocationField: "_geoloc" }
     )
-
   const typesense_client = () =>
     new Typesense.Client({
-      apiKey: process.env.TYPESENSE_API_SEARCH, // Be sure to use the search-only-api-key
+      apiKey: process.env.TYPESENSE_API_SEARCH,
       nodes: [
         {
           host: "typesense.mattycakes.ca",
@@ -166,19 +86,22 @@ export default function SearchInterface() {
       connectionTimeoutSeconds: 2,
     })
   const client = typesense_client()
+  /** END: Required for Autocomplete
+   */
 
   return (
     <InstantSearch
-      searchClient={searchClient}
+      searchClient={client}
       indexName="mattycakes"
       searchState={searchState}
       onSearchStateChange={setSearchState}
       createURL={createURL}
     >
       <VirtualSearchBox />
-
       <Autocomplete
         classNames={{
+          detachedCancelButton: "transition-all",
+          form: "border-none",
           input: "autocomplete-input",
           detachedOverlay: "backdrop-blur-md",
           detachedSearchButtonIcon: "cursor-pointer",
@@ -186,7 +109,7 @@ export default function SearchInterface() {
             "cursor-pointer px-2 py-2 rounded-md text-regular font-medium",
           detachedSearchButtonPlaceholder: "hidden",
         }}
-        placeholder="test"
+        placeholder="Quick search..."
         detachedMediaQuery=""
         autoFocus
         onSubmit={onSubmit}

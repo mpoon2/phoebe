@@ -1,10 +1,98 @@
-.aa-Panel {
-  z-index: 40 !important;
-}
-
 // force cursor to pointer, else auto style is set
 .aa-DetachedSearchButtonIcon {
   cursor: pointer;
+}
+
+// normalize line height
+.aa-ItemWrapper {
+  * {
+    line-height: 1.5;
+  }
+}
+
+// add a bottom border for clarity
+.aa-Item {
+  border-bottom-width: 1px;
+  border-color: var(--divider-light);
+  margin-bottom: 0;
+  border-radius: 0;
+  padding: 0.75rem 1.25rem;
+}
+.dark-mode .aa-Item {
+  border-color: var(--divider-dark);
+}
+.aa-DetachedFormContainer {
+  border-bottom: 1px solid var(--divider-light);
+}
+.dark-mode .aa-DetachedFormContainer {
+  border-bottom: 1px solid var(--divider-dark);
+}
+
+// force grid gap
+.aa-ItemContentBody {
+  grid-gap: 0.25rem;
+  gap: 0.25rem;
+}
+
+// force no list padding
+.aa-PanelLayout {
+  padding: 0 !important;
+}
+.aa-GradientBottom {
+  display: none;
+}
+// force theme text colour
+.aa-DetachedCancelButton {
+  color: var(--text-light);
+}
+.dark-mode .aa-DetachedCancelButton {
+  color: var(--text-dark);
+}
+.aa-ItemContentDescription {
+  color: var(--text-light);
+}
+.dark-mode .aa-ItemContentDescription {
+  color: var(--text-dark);
+}
+.aa-ItemContentTitle {
+  font-weight: var(--text-medium);
+  color: var(--text-light);
+}
+.dark-mode .aa-ItemContentTitle {
+  color: var(--text-dark);
+}
+.aa-ItemContentDescription mark {
+  background-color: var(--body-light);
+  color: var(--active-link);
+}
+.dark-mode .aa-ItemContentDescription mark {
+  background-color: var(--body-dark);
+  color: var(--active-link);
+}
+.aa-ItemContentTitle mark {
+  background-color: var(--body-light);
+  color: var(--active-link);
+}
+.dark-mode .aa-ItemContentTitle mark {
+  background-color: var(--body-dark);
+  color: var(--active-link);
+}
+.aa-Item[aria-selected="true"] {
+  background-color: var(--active-link);
+  * {
+    background-color: var(--active-link) !important;
+    color: var(--white) !important;
+  }
+}
+.aa-Input {
+  color: var(--text-light);
+  caret-color: var(--active-link);
+}
+.dark-mode .aa-Input {
+  color: var(--text-dark);
+}
+.aa-InputWrapper input::placeholder {
+  color: var(--text-light-muted);
 }
 
 // force button background to light and dark body
@@ -13,13 +101,55 @@
   border: 0;
   padding: 0.5rem;
 }
+.dark-mode .aa-DetachedSearchButton {
+  background-color: var(--body-dark);
+}
 
+// remove border around cancel button
+.aa-DetachedCancelButton:focus,
+.aa-DetachedCancelButton:hover {
+  box-shadow: none;
+  color: var(--active-link);
+}
+
+// force toggle icon to be the same size as menu elements
 .aa-SubmitIcon {
   height: 20px !important;
   width: 20px !important;
   fill: var(--text-light);
 }
+.dark-mode .aa-SubmitIcon {
+  fill: var(--text-dark);
+}
 .aa-DetachedSearchButtonIcon {
   height: 20px !important;
   width: 20px !important;
 }
+
+// force no borders for search form
+.aa-Form {
+  border: 0;
+  background-color: var(--body-light);
+  &:focus-within {
+    box-shadow: none;
+  }
+}
+.dark-mode .aa-Form {
+  background-color: var(--body-dark);
+}
+
+// force colouration of search modal
+.aa-DetachedContainer {
+  background-color: var(--body-light);
+}
+.dark-mode .aa-DetachedContainer {
+  background-color: var(--body-dark);
+}
+.aa-DetachedContainer .aa-Panel {
+  background-color: var(--body-light);
+}
+.dark-mode .aa-DetachedContainer .aa-Panel {
+  background-color: var(--body-dark);
+}
+
+// remove clear button in search modal

@@ -5,18 +5,11 @@ import { SignedOut, UserButton, SignInButton } from "@clerk/clerk-react"
 import Icon from "./logo.inline.svg"
 import DarkToggle from "./dark-toggle"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faUserAstronaut,
-  faMagnifyingGlass,
-} from "@fortawesome/free-solid-svg-icons"
+import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons"
 import { Disclosure } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 import Search from "./search/search-simple"
-import Icon2 from "./search/typesense.inline.svg"
-import { Fragment } from "react"
 import "./navigation.scss"
-import { Dialog, Transition } from "@headlessui/react"
-import { useHotkeys } from "react-hotkeys-hook"
 
 const navigation = [
   { name: "academic", href: "/academic", current: false },
@@ -30,12 +23,6 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const [isOpen, setOpen] = React.useState(false)
-  const handleClick = () => {
-    setOpen(!isOpen)
-  }
-  useHotkeys("cmd+k", () => setOpen(value => !value))
-
   const query = useStaticQuery(graphql`
     query SITE_TITLE {
       site {
@@ -99,8 +86,6 @@ export default function Navbar() {
                 </div>
                 {/* Dark Mode Toggle */}
                 <DarkToggle />
-                {/* Search toggle */}
-                <Search />
                 {/* Profile dropdown */}
                 <UserButton />
                 {/* If the user is signed out, show the SignIn component */}
@@ -112,6 +97,8 @@ export default function Navbar() {
                     </button>
                   </SignInButton>
                 </SignedOut>
+                {/* Search toggle */}
+                <Search />
               </div>
             </div>
           </div>

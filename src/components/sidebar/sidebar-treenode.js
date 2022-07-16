@@ -2,10 +2,10 @@
  * Code adpated from https://github.com/hasura/gatsby-gitbook-starter
  */
 import * as React from "react"
-import OpenedSvg from "./sidebar-treenode-opened"
-import ClosedSvg from "./sidebar-treenode-closed"
 import config from "../../../config"
 import Link from "../link"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCaretDown, faCaretLeft } from "@fortawesome/free-solid-svg-icons"
 
 const TreeNode = ({
   className = "",
@@ -37,24 +37,26 @@ const TreeNode = ({
   const calculatedClassName = `${className} item ${active ? "active" : ""}`
 
   return (
-    <li className={calculatedClassName}>
-      {title && (
-        <Link to={url}>
-          {title}
-          {!config.sidebar.frontLine && title && hasChildren ? (
-            <button
-              onClick={collapse}
-              aria-label="collapse"
-              className="collapser"
-            >
-              {!isCollapsed ? <OpenedSvg /> : <ClosedSvg />}
-            </button>
-          ) : null}
-        </Link>
-      )}
+    <li
+      className={
+        !config.sidebar.frontLine && title && hasChildren
+          ? `${calculatedClassName} parent`
+          : `${calculatedClassName}`
+      }
+    >
+      {title && <Link to={url}>{title}</Link>}
+      {!config.sidebar.frontLine && title && hasChildren ? (
+        <button onClick={collapse} aria-label="collapse" className="collapser">
+          {!isCollapsed ? (
+            <FontAwesomeIcon icon={faCaretDown} className="ml-1" size="xs" />
+          ) : (
+            <FontAwesomeIcon icon={faCaretLeft} className="ml-1" size="xs" />
+          )}
+        </button>
+      ) : null}
 
       {!isCollapsed && hasChildren ? (
-        <ul>
+        <ul className="sidebar-nav-item ml-4">
           {items.map((item, index) => (
             <TreeNode
               key={item.url + index.toString()}

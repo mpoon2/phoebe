@@ -9,6 +9,12 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import SidebarTOC from "../components/sidebar/sidebar-outline"
 import SidebarNav from "../components/sidebar/sidebar-navigation"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faWandSparkles,
+  faArrowRotateRight,
+  faBarsProgress,
+} from "@fortawesome/free-solid-svg-icons"
 import "./blog-post.scss"
 
 const BlogPostTemplate = ({ data, location }) => {
@@ -23,7 +29,7 @@ const BlogPostTemplate = ({ data, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <div class="article-body">
-        <nav class="left-sidebar hidden lg:block pr-4" role="navigation">
+        <nav class={`left-sidebar hidden lg:block pr-4`} role="navigation">
           <SidebarNav location={location} />
         </nav>
         <section>
@@ -46,27 +52,49 @@ const BlogPostTemplate = ({ data, location }) => {
               >
                 {post.frontmatter.description}
               </p>
-              {post.frontmatter.tags.map(tag => {
-                return (
-                  <span data-typesense-field="tags" className="metadata-tag">
-                    {tag}
-                  </span>
-                )
-              })}
-              <p
-                data-typesense-field="date-created"
-                className="metadata-date-created"
-              >
-                {post.frontmatter.date}
+              <p>
+                {post.frontmatter.tags.map(tag => {
+                  return (
+                    <span
+                      data-typesense-field="tags"
+                      className="metadata-tag rounded mr-4 mb-4 mt-4 px-4 py-2 font-medium text-sm"
+                    >
+                      {tag}
+                    </span>
+                  )
+                })}
               </p>
-              <p
-                data-typesense-field="date-modified"
-                className="metadata-date-modified"
-              >
-                {post.frontmatter.modified}
-              </p>
-              <p data-typesense-field="status" className="metadata-status">
-                {post.frontmatter.status}
+              <p>
+                <span
+                  data-typesense-field="date-created"
+                  className="metadata-date-created mr-4"
+                >
+                  <FontAwesomeIcon
+                    icon={faWandSparkles}
+                    className="mr-1"
+                    size="xs"
+                  />
+                  Created {post.frontmatter.date}
+                </span>
+                <span
+                  data-typesense-field="date-modified"
+                  className="metadata-date-modified mr-4"
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowRotateRight}
+                    className="mr-1"
+                    size="xs"
+                  />
+                  Updated {post.frontmatter.modified}
+                </span>
+                <span data-typesense-field="status" className="metadata-status">
+                  <FontAwesomeIcon
+                    icon={faBarsProgress}
+                    className="mr-1"
+                    size="xs"
+                  />
+                  {post.frontmatter.status}
+                </span>
               </p>
             </header>
             <section

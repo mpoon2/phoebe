@@ -1,19 +1,24 @@
 const config = {
   gatsby: {
     pathPrefix: "/",
-    siteUrl: "https://mattycakes.ca",
+    siteUrl: "https://mattycakes.ca/",
     gaTrackingId: null,
-    trailingSlash: false,
+    trailingSlash: true,
   },
   sidebar: {
     forcedNavOrder: [
-      "/academic", // add trailing slash if enabled above
-      "/ramblings",
+      "/academic/", // add trailing slash if enabled above,
+      "/journal/",
+      "/personal/",
+      "/ramblings/",
+      "/CHANGELOG",
     ],
     collapsedNav: [
-      "/ramblings", // add trailing slash if enabled above
+      "/journal/", // add trailing slash if enabled above
     ],
-    links: [{ text: "Hasura", link: "https://hasura.io" }],
+    links: [
+      { text: "Phoebe v0.1.0", link: "https://github.com/mpoon2/phoebe" },
+    ],
     frontLine: false,
     ignoreIndex: false,
   },

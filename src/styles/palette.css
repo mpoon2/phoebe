@@ -27,6 +27,7 @@
   --nord18: #c2c7d1;
   --nord19: rgba(249, 250, 251, 0.9);
   --nord20: rgba(46, 52, 64, 0.9);
+  --nord21: #292f3a;
 }
 
 /* Everforest Theme Colours */
@@ -74,6 +75,7 @@
 
 :root {
   /* Mode Agnostic */
+  --link: var(--nord7);
   --active-link: var(--nord8);
   /* Light Mode */
   --text-light: var(--nord3);

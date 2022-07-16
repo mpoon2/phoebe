@@ -1,0 +1,13 @@
+/* Generated with http://k88hudson.github.io/syntax-highlighting-theme-generator/www */
+
+/*********************************************************
+* General
+*/
+.dark-mode {
+  pre[class*="language-"] {
+    background: #4c566a;
+  }
+  :not(pre) > code[class*="language-"] {
+    background: #4c566a;
+  }
+}

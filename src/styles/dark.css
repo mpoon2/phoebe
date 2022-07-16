@@ -4,3 +4,6 @@ body.dark-mode {
   background-color: var(--body-dark);
   color: var(--text-dark);
 }
+
+.dark-mode {
+}

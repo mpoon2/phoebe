@@ -94,6 +94,12 @@
 .aa-InputWrapper input::placeholder {
   color: var(--text-light-muted);
 }
+.aa-DetachedSearchButtonPlaceholder {
+  color: var(--text-light-muted);
+}
+.dark-mode .aa-DetachedSearchButtonPlaceholder {
+  color: var(--text-dark-muted);
+}
 
 // force button background to light and dark body
 .aa-DetachedSearchButton {
@@ -152,4 +158,11 @@
   background-color: var(--body-dark);
 }
 
-// remove clear button in search modal
+// enable borders
+.sidebar-search {
+  border: 1px solid var(--text-light);
+  margin-bottom: 1rem;
+}
+.dark-mode .sidebar-search {
+  border: 1px solid var(--text-dark);
+}

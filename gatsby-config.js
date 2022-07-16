@@ -157,7 +157,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            title: "Mattycakes Digital Garden RSS Feed",
           },
         ],
       },

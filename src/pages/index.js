@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Footer from "../components/footer"
 import "./index.css"
 
 const BlogIndex = ({ data, location }) => {
-
   const siteTitle = data.site.siteMetadata?.title || `Title`
 
   const posts = data.allMarkdownRemark.nodes
@@ -57,6 +57,7 @@ const BlogIndex = ({ data, location }) => {
           )
         })}
       </ol>
+      <Footer />
     </Layout>
   )
 }

@@ -7,6 +7,7 @@ import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Footer from "../components/footer"
 import SidebarTOC from "../components/sidebar/sidebar-outline"
 import SidebarNav from "../components/sidebar/sidebar-navigation"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -29,12 +30,12 @@ const BlogPostTemplate = ({ data, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <div class="article-body">
-        <nav class={`left-sidebar hidden lg:block pr-4`} role="navigation">
+        <nav class={`left-sidebar hidden xl:block pr-4`} role="navigation">
           <SidebarNav location={location} />
         </nav>
         <section>
           <article
-            className="blog-post p-0 lg:pl-4 xl:pr-4 lg:pr-2"
+            className="blog-post p-0 xl:pl-4 lg:pr-2 xl:pr-4 "
             itemScope
             itemType="http://schema.org/Article"
           >
@@ -132,9 +133,10 @@ const BlogPostTemplate = ({ data, location }) => {
                 </ul>
               </nav>
             </footer>
+            <Footer />
           </article>
         </section>
-        <nav class="right-sidebar hidden xl:block pl-4" role="navigation">
+        <nav class="right-sidebar hidden lg:block pl-4" role="navigation">
           <SidebarTOC headings={post.headings} />
         </nav>
       </div>

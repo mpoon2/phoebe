@@ -168,10 +168,10 @@ module.exports = {
         name: `Mattycake's Digital Garden`,
         short_name: `Mattycakes`,
         start_url: `/`,
-        background_color: `#ffffff`,
+        background_color: `#f8f9fb`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
-        theme_color: `#663399`,
+        theme_color: `#2e3440`,
         display: `standalone`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
         theme_color_in_head: false, // This will avoid adding theme-color meta tag, for dark/light mode.

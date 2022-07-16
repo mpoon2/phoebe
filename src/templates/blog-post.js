@@ -15,6 +15,7 @@ import {
   faWandSparkles,
   faArrowRotateRight,
   faBarsProgress,
+  faTags,
 } from "@fortawesome/free-solid-svg-icons"
 import "./blog-post.scss"
 
@@ -53,47 +54,55 @@ const BlogPostTemplate = ({ data, location }) => {
               >
                 {post.frontmatter.description}
               </p>
-              <p>
-                {post.frontmatter.tags.map(tag => {
-                  return (
-                    <span
-                      data-typesense-field="tags"
-                      className="metadata-tag rounded mr-4 mb-4 mt-4 px-4 py-2 font-medium text-sm"
-                    >
-                      {tag}
-                    </span>
-                  )
-                })}
-              </p>
-              <p>
+              <p className="meta">
+                <span className="mr-4">
+                  <FontAwesomeIcon icon={faTags} className="mr-1" size="xs" />
+                  <span className="font-medium text-sm">Tags: {` `}</span>
+                  {post.frontmatter.tags.map(tag => {
+                    return (
+                      <span
+                        data-typesense-field="tags"
+                        className="metadata-tag rounded mr-1 text-sm"
+                      >
+                        {tag}
+                      </span>
+                    )
+                  })}
+                </span>
                 <span
                   data-typesense-field="date-created"
-                  className="metadata-date-created mr-4"
+                  className="metadata-date-created mr-4 text-sm"
                 >
                   <FontAwesomeIcon
                     icon={faWandSparkles}
                     className="mr-1"
                     size="xs"
                   />
-                  Created {post.frontmatter.date}
+                  <span className="font-medium text-sm">Created: {` `}</span>
+                  {post.frontmatter.date}
                 </span>
                 <span
                   data-typesense-field="date-modified"
-                  className="metadata-date-modified mr-4"
+                  className="metadata-date-modified mr-4 text-sm"
                 >
                   <FontAwesomeIcon
                     icon={faArrowRotateRight}
                     className="mr-1"
                     size="xs"
                   />
-                  Updated {post.frontmatter.modified}
+                  <span className="font-medium text-sm">Updated: {` `}</span>
+                  {post.frontmatter.modified}
                 </span>
-                <span data-typesense-field="status" className="metadata-status">
+                <span
+                  data-typesense-field="status"
+                  className="metadata-status text-sm"
+                >
                   <FontAwesomeIcon
                     icon={faBarsProgress}
                     className="mr-1"
                     size="xs"
                   />
+                  <span className="font-medium text-sm">Status: {` `}</span>
                   {post.frontmatter.status}
                 </span>
               </p>

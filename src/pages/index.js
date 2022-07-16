@@ -26,6 +26,18 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
+      <h1 className="mt-0">Oh, Hello there.</h1>
+      <p className="subtitle font-medium">
+        You've stumbled on to my digital garden for all things related to
+        academics, mental health, photography and whatever I feel like writing
+        about. I enjoy creating aesthetically pleasing documentation, both long
+        and short form, to satisfy my industrious and creative needs. This
+        garden will always be a work in progress.
+      </p>
+      <p className="subtitle font-medium">
+        I am a student at Athabasca University, a mediocore photographer, and
+        self-hosted enthusiast.
+      </p>
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug

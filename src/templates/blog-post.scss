@@ -1,6 +1,6 @@
 .article-body {
   display: flex;
-  height: calc(100vh - 152px);
+  height: calc(100vh - 128px);
 }
 
 .left-sidebar {
@@ -14,8 +14,4 @@
 section {
   flex: 1;
   overflow: auto;
-}
-
-.metadata-tag {
-  background-color: var(--link);
 }

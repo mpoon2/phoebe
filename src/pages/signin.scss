@@ -1,0 +1,9 @@
+.cl-component.cl-sign-in,
+.cl-component.cl-sign-up {
+  background-color: var(--body-light) !important; //override
+  box-shadow: none !important; //override
+}
+
+.cl-auth-form-header {
+  display: none !important; //override
+}

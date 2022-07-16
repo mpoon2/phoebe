@@ -4,6 +4,7 @@ import Footer from "../components/footer"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { SignIn } from "@clerk/clerk-react"
+import "./signin.scss"
 
 // Render the sign in component in your
 // custom sign in page.

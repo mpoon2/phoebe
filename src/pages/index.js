@@ -3,7 +3,6 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Footer from "../components/footer"
-import HeroSVG from "../images/hero.inline.svg"
 import "./index.scss"
 
 const BlogIndex = ({ data, location }) => {

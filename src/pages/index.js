@@ -38,9 +38,7 @@ const BlogIndex = ({ data, location }) => {
             </p>
           </div>
           <div className="max-h-fit lg:flex-auto px-4 sm:px-12 lg:pr-16 lg:pl-0">
-            <div className="lg:py-12">
-              <HeroSVG />
-            </div>
+            <div className="lg:py-12"></div>
           </div>
         </div>
       </div>

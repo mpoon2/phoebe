@@ -3,8 +3,8 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Footer from "../components/footer"
+import HeroSVG from "../images/hero.inline.svg"
 import "./index.scss"
-import HeroSVG from "../images/hero.svg"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -39,7 +39,7 @@ const BlogIndex = ({ data, location }) => {
           </div>
           <div className="max-h-fit lg:flex-auto px-4 sm:px-12 lg:pr-16 lg:pl-0">
             <div className="lg:py-12">
-              <img src={HeroSVG} alt="Hero Image" />
+              <HeroSVG />
             </div>
           </div>
         </div>

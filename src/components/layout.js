@@ -10,9 +10,7 @@ const Layout = ({ location, title, children }) => {
     <div className="global-wrapper" data-is-root-path={isRootPath}>
       <Navigation />
       <main>
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-12 lg:px-16">
-          {children}
-        </div>
+        <div className="">{children}</div>
       </main>
       {/* each page style is responsible for their own footer placement*/}
     </div>

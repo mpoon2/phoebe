@@ -3,7 +3,6 @@
  */
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -30,7 +29,7 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <div class="article-body">
+      <div class="article-body max-w-screen-2xl mx-auto px-4 sm:px-12 lg:px-16">
         <nav class={`left-sidebar hidden xl:block pr-4`} role="navigation">
           <SidebarNav location={location} />
         </nav>

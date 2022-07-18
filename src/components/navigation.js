@@ -1,11 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
-import { SignedOut, UserButton, SignInButton } from "@clerk/clerk-react"
 import Icon from "./logo.inline.svg"
 import DarkToggle from "./dark-toggle"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons"
 import { Disclosure } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 import Search from "./search/search-simple"
@@ -86,18 +83,6 @@ export default function Navbar() {
                 </div>
                 {/* Dark Mode Toggle */}
                 <DarkToggle />
-                {/* Profile dropdown */}
-                <UserButton />
-                {/* If the user is signed out, show the SignIn component */}
-                {/* After signing in, the user button will be visible */}
-                <SignedOut>
-                  <SignInButton>
-                    <button className="px-2 py-2 rounded-md text-regular font-medium">
-                      <FontAwesomeIcon icon={faUserAstronaut} size="s" />
-                    </button>
-                  </SignInButton>
-                </SignedOut>
-                {/* Search toggle */}
                 <Search />
               </div>
             </div>

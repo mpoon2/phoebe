@@ -1,0 +1,40 @@
+.hero-text {
+  color: var(--text-light);
+}
+.hero-highlight {
+  color: var(--text-dark);
+}
+.hero-bg {
+  background-color: var(--body-light);
+  svg {
+    .cls-1 {
+      fill: var(--body-light);
+    }
+    .cls-2 {
+      fill: var(--link);
+    }
+    .cls-3 {
+      fill: var(--text-light);
+    }
+  }
+}
+
+.dark-mode {
+  .hero-bg {
+    background-color: var(--link);
+    svg {
+      .cls-1 {
+        fill: var(--text-dark);
+      }
+      .cls-2 {
+        fill: var(--link);
+      }
+      .cls-3 {
+        fill: var(--body-dark);
+      }
+    }
+  }
+  .hero-text {
+    color: var(--body-dark);
+  }
+}

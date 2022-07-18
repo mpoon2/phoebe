@@ -1277,20 +1277,6 @@
   resolved "https://registry.yarnpkg.com/@builder.io/partytown/-/partytown-0.5.4.tgz#1a89069978734e132fa4a59414ddb64e4b94fde7"
   integrity sha512-qnikpQgi30AS01aFlNQV6l8/qdZIcP76mp90ti+u4rucXHsn4afSKivQXApqxvrQG9+Ibv45STyvHizvxef/7A==
 
-"@clerk/clerk-react@^3.4.4":
-  version "3.4.4"
-  resolved "https://registry.yarnpkg.com/@clerk/clerk-react/-/clerk-react-3.4.4.tgz#35687eda4262660ab48f239ee3247ddd4a9fa79b"
-  integrity sha512-r9Mlgp1FGHEj9r93J93tBOfu8McSKHeNkPeJasiN4BSU8oQz/V2/nU5k3VHjpyB7Youk8B+hPKtvG+FHYpl6Xw==
-  dependencies:
-    "@clerk/types" "^2.19.1"
-    swr "^1.3.0"
-    tslib "^2.3.1"
-
-"@clerk/types@^2.19.1":
-  version "2.19.1"
-  resolved "https://registry.yarnpkg.com/@clerk/types/-/types-2.19.1.tgz#816517a9c31377a0f552548ff524fac515495406"
-  integrity sha512-E4dV7FowddzUT3ygNCzPC8Z3qzAlrdANhsALZMIrdpaMELiHqyNGhu1uXsRLXeHu3bkXt8fWCajFuFDvmXCOEQ==
-
 "@emotion/babel-plugin-jsx-pragmatic@^0.1.5":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin-jsx-pragmatic/-/babel-plugin-jsx-pragmatic-0.1.5.tgz#27debfe9c27c4d83574d509787ae553bf8a34d7e"
@@ -6723,11 +6709,6 @@ gatsby-plugin-build-date@^1.0.0:
   integrity sha512-XlR4w3mQqhRE241Kx4/0lFY78/TnY1IDqgvKzgk17RZUcM13QYk7GyuN5Ifx96NMbMEwUUeal4lDqSigfr2Ydw==
   dependencies:
     date-and-time "^0.11.1"
-
-gatsby-plugin-clerk@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-clerk/-/gatsby-plugin-clerk-2.0.0.tgz#16cfa2b37633c3ad086e5a2240b959d20bed94e9"
-  integrity sha512-ycQdfmVomDsSXUMUSsm0rap5KIX3AdBMhylzKE/m/9i+QsGMum3jhkqXW6K5f1NqMhSN+Ou/sJH2mBIQ3FLMtQ==
 
 gatsby-plugin-emotion@^7.18.0:
   version "7.18.0"
@@ -12741,11 +12722,6 @@ swap-case@^2.0.2:
   dependencies:
     tslib "^2.0.3"
 
-swr@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/swr/-/swr-1.3.0.tgz#c6531866a35b4db37b38b72c45a63171faf9f4e8"
-  integrity sha512-dkghQrOl2ORX9HYrMDtPa7LTVHJjCTeZoB1dqTbnnEDlSvN8JEKpYIYurDfvbQFUUS8Cg8PceFVZNkW0KNNYPw==
-
 symbol-observable@^1.0.4:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
@@ -13080,7 +13056,7 @@ tslib@^1.10.0, tslib@^1.7.0, tslib@^1.8.1, tslib@^1.9.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.3.1, tslib@^2.4.0, tslib@~2.4.0:
+tslib@^2, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.4.0, tslib@~2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==

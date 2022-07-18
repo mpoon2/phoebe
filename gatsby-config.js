@@ -26,12 +26,6 @@ module.exports = {
     `gatsby-plugin-emotion`,
     `gatsby-plugin-fontawesome-css`,
     {
-      resolve: "gatsby-plugin-clerk",
-      options: {
-        frontendApi: process.env.API_KEY,
-      },
-    },
-    {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {

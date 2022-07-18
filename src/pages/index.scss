@@ -7,13 +7,13 @@
 .hero-bg {
   background-color: var(--body-light);
   svg {
-    .cls-1 {
+    .F {
       fill: var(--body-light);
     }
-    .cls-2 {
+    .E {
       fill: var(--link);
     }
-    .cls-3 {
+    .D {
       fill: var(--text-light);
     }
   }
@@ -23,13 +23,13 @@
   .hero-bg {
     background-color: var(--link);
     svg {
-      .cls-1 {
+      .F {
         fill: var(--text-dark);
       }
-      .cls-2 {
+      .E {
         fill: var(--link);
       }
-      .cls-3 {
+      .D {
         fill: var(--body-dark);
       }
     }

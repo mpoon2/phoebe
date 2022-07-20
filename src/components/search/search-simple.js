@@ -139,7 +139,7 @@ export default function SearchInterface() {
                   highlight_start_tag: "__aa-highlight__", // <===== Customize highlight tags
                   highlight_end_tag: "__/aa-highlight__", // <===== Customize highlight tags
                   highlight_fields:
-                    "title, description, raw-markdown-body, tags",
+                    "title, description, raw_markdown_body, tags",
                   highlight_affix_num_tokens: 8,
                   highlight_full_fields: "title, description, tags",
                   exhaustive_search: true,

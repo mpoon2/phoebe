@@ -13,7 +13,7 @@ export default function ResultItem({ hit, components }) {
             <components.Snippet
               tagName="mark"
               hit={hit}
-              attribute="raw-markdown-body"
+              attribute="raw_markdown_body"
             />
           </div>
         </div>

@@ -52,6 +52,7 @@ module.exports = {
             html: node.html,
             status: node.frontmatter.status,
             raw_markdown_body: node.rawMarkdownBody,
+            page_priority_score: 10,
           })),
       },
     },

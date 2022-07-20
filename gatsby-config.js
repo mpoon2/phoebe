@@ -252,14 +252,14 @@ module.exports = {
               index: true,
             },
             {
-              name: "date-created",
+              name: "date",
               type: "string",
               facet: false,
               optional: true,
               index: true,
             },
             {
-              name: "date-modified",
+              name: "modified",
               type: "string",
               facet: false,
               optional: true,
@@ -280,6 +280,13 @@ module.exports = {
               index: true,
             },
             {
+              name: "html",
+              type: "string",
+              facet: false,
+              optional: true,
+              index: true,
+            },
+            {
               name: "status",
               type: "string",
               facet: false,
@@ -287,7 +294,7 @@ module.exports = {
               index: true,
             },
             {
-              name: "raw-markdown-body",
+              name: "raw_markdown_body",
               type: "string",
               facet: false,
               optional: true,

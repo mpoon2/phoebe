@@ -134,7 +134,7 @@ export default function SearchInterface() {
                 .documents()
                 .search({
                   q: query,
-                  query_by: "title, description, raw-markdown-body, tags",
+                  query_by: "title, description, raw_markdown_body, tags",
                   group_by: "tags",
                   highlight_start_tag: "__aa-highlight__", // <===== Customize highlight tags
                   highlight_end_tag: "__/aa-highlight__", // <===== Customize highlight tags

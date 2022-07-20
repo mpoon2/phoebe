@@ -15,6 +15,47 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-json-output`,
+      options: {
+        siteUrl: `https://mattycakes.ca/`, // defined on top of plugins
+        graphQLQuery: `
+          {
+            allMarkdownRemark(limit: 1000) {
+              edges {
+                node {
+                  excerpt
+                  rawMarkdownBody
+                  html
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    title
+                    description
+                    date(formatString: "MMMM DD, YYYY")
+                    modified(formatString: "MMMM DD, YYYY")
+                    tags
+                  }
+                }
+              }
+            }
+          }
+        `,
+        serialize: results =>
+          results.data.allMarkdownRemark.edges.map(({ node }) => ({
+            path: node.fields.slug, // MUST contain a path
+            title: node.frontmatter.title,
+            date: node.frontmatter.date,
+            modified: node.frontmatter.modified,
+            description: node.frontmatter.description,
+            tags: node.frontmatter.tags,
+            html: node.html,
+            status: node.frontmatter.status,
+            raw_markdown_body: node.rawMarkdownBody,
+          })),
+      },
+    },
+    {
       resolve: `gatsby-plugin-build-date`,
       options: {
         formatAsDateString: true, // boolean, defaults to true - if false API will return unformatted string from new Date()

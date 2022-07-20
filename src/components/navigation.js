@@ -5,6 +5,7 @@ import Icon from "./logo.inline.svg"
 import DarkToggle from "./dark-toggle"
 import { Disclosure } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
+import { useKeycloak } from "@react-keycloak/web"
 import Search from "./search/search-simple"
 import "./navigation.scss"
 
@@ -20,6 +21,8 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const { keycloak, initialized } = useKeycloak()
+
   const query = useStaticQuery(graphql`
     query SITE_TITLE {
       site {
@@ -67,18 +70,32 @@ export default function Navbar() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
-                    {navigation.map(item => (
+                    {keycloak &&
+                      keycloak.hasResourceRole("viewers") &&
+                      navigation.map(item => (
+                        <Link
+                          to={item.href}
+                          className={classNames(
+                            "nav-item",
+                            "px-3 py-2 rounded-md text-sm font-medium"
+                          )}
+                          activeClassName="active-nav-item"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    {keycloak && !keycloak.authenticated && (
                       <Link
-                        to={item.href}
+                        to="/"
                         className={classNames(
                           "nav-item",
                           "px-3 py-2 rounded-md text-sm font-medium"
                         )}
                         activeClassName="active-nav-item"
                       >
-                        {item.name}
+                        login
                       </Link>
-                    ))}
+                    )}
                   </div>
                 </div>
                 {/* Dark Mode Toggle */}

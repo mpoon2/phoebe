@@ -111,7 +111,6 @@ export default function SearchInterface() {
         }}
         placeholder="Quick search..."
         detachedMediaQuery=""
-        autoFocus
         onSubmit={onSubmit}
         onReset={onReset}
         plugins={plugins}

@@ -44,6 +44,7 @@ module.exports = {
         serialize: results =>
           results.data.allMarkdownRemark.edges.map(({ node }) => ({
             path: node.fields.slug, // MUST contain a path
+            page_path: node.fields.slug, // MUST contain a path
             title: node.frontmatter.title,
             date: node.frontmatter.date,
             modified: node.frontmatter.modified,

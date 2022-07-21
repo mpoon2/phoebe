@@ -1,7 +1,16 @@
 import React from "react"
 import { ReactKeycloakProvider } from "@react-keycloak/web"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSpinner } from "@fortawesome/free-solid-svg-icons"
 
-const Loading = () => <div>Initializing server side rendering...</div>
+const Loading = () => (
+  <div className="text-center py-8 block">
+    <p>
+      <FontAwesomeIcon icon={faSpinner} spinPulse size="xl" />
+    </p>
+    <p>Initializing server size rendering...</p>
+  </div>
+)
 
 export const wrapRootElement = ({ element }) => {
   return (

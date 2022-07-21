@@ -1,6 +1,8 @@
 //gatsby-browser.js
 import React from "react"
 import { ReactKeycloakProvider } from "@react-keycloak/web"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSpinner } from "@fortawesome/free-solid-svg-icons"
 import keycloak from "./src/components/keycloak"
 
 // NORMALIZE CSS ACROSS ALL BROWSERS
@@ -19,7 +21,14 @@ import("./src/styles/prismjs/nord-dark.scss")
 // KATEX CSS FILE
 import(`katex/dist/katex.min.css`)
 
-const Loading = () => <div>Loading Keycloak</div>
+const Loading = () => (
+  <div className="text-center py-8 block">
+    <p>
+      <FontAwesomeIcon icon={faSpinner} spinPulse size="xl" />
+    </p>
+    <p>Loading Keycloak...</p>
+  </div>
+)
 
 // Wrap everything inside KeycloakProvider
 export const wrapRootElement = ({ element }) => {

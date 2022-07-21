@@ -59,15 +59,22 @@ const BlogPostTemplate = ({ data, location }) => {
                 <span className="mr-4">
                   <FontAwesomeIcon icon={faTags} className="mr-1" size="xs" />
                   <span className="font-medium text-sm">Tags: {` `}</span>
-                  {post.frontmatter.tags.map(tag => {
-                    return (
-                      <span
-                        data-typesense-field="tags"
-                        className="metadata-tag rounded mr-1 text-sm"
-                      >
-                        {tag}
-                      </span>
-                    )
+                  {post.frontmatter.tags.map((tag, i, arr) => {
+                    if (arr.length - 1 === i) {
+                      // last one
+                      return (
+                        <Link to={`/tags/${tag}`}>
+                          <span className="mr-1">{tag}</span>
+                        </Link>
+                      )
+                    } else {
+                      // not last one
+                      return (
+                        <Link to={`/tags/${tag}`}>
+                          <span className="mr-1">{tag},</span>
+                        </Link>
+                      )
+                    }
                   })}
                 </span>
                 <span

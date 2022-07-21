@@ -104,11 +104,19 @@ const BlogIndex = ({ data, location }) => {
                             />
                             {post.frontmatter.tags.map((tag, i, arr) => {
                               if (arr.length - 1 === i) {
-                                return <span className="mr-1">{tag}</span>
                                 // last one
+                                return (
+                                  <Link to={`/tags/${tag}`}>
+                                    <span className="mr-1">{tag}</span>
+                                  </Link>
+                                )
                               } else {
-                                return <span className="mr-1">{tag},</span>
                                 // not last one
+                                return (
+                                  <Link to={`/tags/${tag}`}>
+                                    <span className="mr-1">{tag},</span>
+                                  </Link>
+                                )
                               }
                             })}
                           </span>
@@ -175,11 +183,19 @@ const BlogIndex = ({ data, location }) => {
                             />
                             {post.frontmatter.tags.map((tag, i, arr) => {
                               if (arr.length - 1 === i) {
-                                return <span className="mr-1">{tag}</span>
                                 // last one
+                                return (
+                                  <Link to={`/tags/${tag}`}>
+                                    <span className="mr-1">{tag}</span>
+                                  </Link>
+                                )
                               } else {
-                                return <span className="mr-1">{tag},</span>
                                 // not last one
+                                return (
+                                  <Link to={`/tags/${tag}`}>
+                                    <span className="mr-1">{tag},</span>
+                                  </Link>
+                                )
                               }
                             })}
                           </span>

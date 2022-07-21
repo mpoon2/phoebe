@@ -16,9 +16,11 @@ import {
   faBarsProgress,
   faTags,
 } from "@fortawesome/free-solid-svg-icons"
+import { useKeycloak } from "@react-keycloak/web"
 import "./blog-post.scss"
 
 const BlogPostTemplate = ({ data, location }) => {
+  const { keycloak, initialized } = useKeycloak()
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
@@ -106,11 +108,35 @@ const BlogPostTemplate = ({ data, location }) => {
                 </span>
               </p>
             </header>
-            <section
-              dangerouslySetInnerHTML={{ __html: post.html }}
-              itemProp="articleBody"
-              data-typesense-field="raw-markdown-body"
-            />
+            {keycloak &&
+              keycloak.hasResourceRole("viewers") &&
+              (location.pathname.includes("/academic") ||
+                location.pathname.includes("/journal")) && (
+                <section
+                  dangerouslySetInnerHTML={{ __html: post.html }}
+                  itemProp="articleBody"
+                  data-typesense-field="raw-markdown-body"
+                />
+              )}
+            {keycloak &&
+              !keycloak.hasResourceRole("viewers") &&
+              (location.pathname.includes("/academic") ||
+                location.pathname.includes("/journal")) && (
+                <div>
+                  Only accessible by mattycakes.{" "}
+                  <a onClick={() => keycloak.login()}>Sign in</a>
+                </div>
+              )}
+            {keycloak &&
+              (location.pathname.includes("/personal") ||
+                location.pathname.includes("/ramblings") ||
+                location.pathname.includes("/CHANGELOG")) && (
+                <section
+                  dangerouslySetInnerHTML={{ __html: post.html }}
+                  itemProp="articleBody"
+                  data-typesense-field="raw-markdown-body"
+                />
+              )}
             <hr />
             <footer>
               <Bio />

@@ -3,13 +3,20 @@ import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
 import Icon from "./logo.inline.svg"
 import DarkToggle from "./dark-toggle"
-import { Disclosure } from "@headlessui/react"
+import { Fragment } from "react"
+import { Disclosure, Menu, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 import { useKeycloak } from "@react-keycloak/web"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faUserAstronaut, faLock } from "@fortawesome/free-solid-svg-icons"
 import Search from "./search/search-simple"
 import "./navigation.scss"
 
-const navigation = [
+const navigationPublic = [
+  { name: "personal", href: "/personal", current: false },
+  { name: "ramblings", href: "/ramblings", current: false },
+]
+const navigationPrivate = [
   { name: "academic", href: "/academic", current: false },
   { name: "journal", href: "/journal", current: false },
   { name: "personal", href: "/personal", current: false },
@@ -72,7 +79,7 @@ export default function Navbar() {
                   <div className="flex space-x-4">
                     {keycloak &&
                       keycloak.hasResourceRole("viewers") &&
-                      navigation.map(item => (
+                      navigationPrivate.map(item => (
                         <Link
                           to={item.href}
                           className={classNames(
@@ -84,22 +91,92 @@ export default function Navbar() {
                           {item.name}
                         </Link>
                       ))}
-                    {keycloak && !keycloak.authenticated && (
-                      <Link
-                        to="/"
-                        className={classNames(
-                          "nav-item",
-                          "px-3 py-2 rounded-md text-sm font-medium"
-                        )}
-                        activeClassName="active-nav-item"
-                      >
-                        login
-                      </Link>
-                    )}
+                    {keycloak &&
+                      !keycloak.authenticated &&
+                      navigationPublic.map(item => (
+                        <Link
+                          to={item.href}
+                          className={classNames(
+                            "nav-item",
+                            "px-3 py-2 rounded-md text-sm font-medium"
+                          )}
+                          activeClassName="active-nav-item"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
                   </div>
                 </div>
                 {/* Dark Mode Toggle */}
                 <DarkToggle />
+                {/* Profile dropdown */}
+                <Menu as="div" className="relative">
+                  <div>
+                    <Menu.Button className="px-2 py-2 rounded-md text-regular font-medium">
+                      <span className="sr-only">Open user menu</span>
+                      {keycloak && keycloak.authenticated ? (
+                        <FontAwesomeIcon icon={faUserAstronaut} size="s" />
+                      ) : (
+                        <FontAwesomeIcon icon={faLock} size="s" />
+                      )}
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            Profile
+                          </a>
+                        )}
+                      </Menu.Item>
+                      {keycloak && keycloak.authenticated ? (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              onClick={() => keycloak.logout()}
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Sign out
+                            </a>
+                          )}
+                        </Menu.Item>
+                      ) : (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              onClick={() => keycloak.login()}
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Sign in
+                            </a>
+                          )}
+                        </Menu.Item>
+                      )}
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+                {/* Search Toggle*/}
                 <Search />
               </div>
             </div>
@@ -107,22 +184,42 @@ export default function Navbar() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map(item => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white mobile-nav-item-active"
-                      : "mobile-nav-item hover:bg-gray-700 hover:text-white",
-                    "block px-3 py-2 rounded-md text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
+              {keycloak &&
+                keycloak.hasResourceRole("viewers") &&
+                navigationPrivate.map(item => (
+                  <Disclosure.Button
+                    key={item.name}
+                    as="a"
+                    href={item.href}
+                    className={classNames(
+                      item.current
+                        ? "bg-gray-900 text-white mobile-nav-item-active"
+                        : "mobile-nav-item hover:bg-gray-700 hover:text-white",
+                      "block px-3 py-2 rounded-md text-base font-medium"
+                    )}
+                    aria-current={item.current ? "page" : undefined}
+                  >
+                    {item.name}
+                  </Disclosure.Button>
+                ))}
+              {keycloak &&
+                !keycloak.authenticated &&
+                navigationPublic.map(item => (
+                  <Disclosure.Button
+                    key={item.name}
+                    as="a"
+                    href={item.href}
+                    className={classNames(
+                      item.current
+                        ? "bg-gray-900 text-white mobile-nav-item-active"
+                        : "mobile-nav-item hover:bg-gray-700 hover:text-white",
+                      "block px-3 py-2 rounded-md text-base font-medium"
+                    )}
+                    aria-current={item.current ? "page" : undefined}
+                  >
+                    {item.name}
+                  </Disclosure.Button>
+                ))}
             </div>
           </Disclosure.Panel>
         </>

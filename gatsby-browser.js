@@ -19,7 +19,7 @@ import("./src/styles/prismjs/nord-dark.scss")
 // KATEX CSS FILE
 import(`katex/dist/katex.min.css`)
 
-const Loading = () => <div>Loading...</div>
+const Loading = () => <div>Loading Keycloak</div>
 
 // Wrap everything inside KeycloakProvider
 export const wrapRootElement = ({ element }) => {

@@ -1,7 +1,7 @@
 import React from "react"
 import { ReactKeycloakProvider } from "@react-keycloak/web"
 
-const Loading = () => <div>Loading...</div>
+const Loading = () => <div>Initializing server side rendering...</div>
 
 export const wrapRootElement = ({ element }) => {
   return (

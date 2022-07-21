@@ -61,6 +61,7 @@ const SidebarLayout = ({ location }) => (
     render={({ allMarkdownRemark }) => {
       return (
         <Sidebar>
+          <p className="header-div">Sidebar Navigation</p>
           <SidebarSearch />
           <Link to="/">
             <FontAwesomeIcon icon={faArrowLeft} size="s" />

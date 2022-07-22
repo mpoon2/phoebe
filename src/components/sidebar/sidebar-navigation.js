@@ -1,7 +1,6 @@
 import * as React from "react"
 import Tree from "./sidebar-tree"
 import styled from "@emotion/styled"
-import SidebarSearch from "../search/search-sidebar"
 import { Link, StaticQuery, graphql } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
@@ -62,12 +61,11 @@ const SidebarLayout = ({ location }) => (
       return (
         <Sidebar>
           <p className="header-div">Sidebar Navigation</p>
-          <SidebarSearch />
-          <Link to="/">
+          <Link to="/" className="text-sm">
             <FontAwesomeIcon icon={faArrowLeft} size="s" />
             {` `}Home
           </Link>
-          <ul className={"sideBarUL ml-[2px]"}>
+          <ul className={"sideBarUL ml-[2px] text-sm"}>
             <Tree edges={allMarkdownRemark.edges} />
             {config.sidebar.links && config.sidebar.links.length > 0 && (
               <Divider />
@@ -76,7 +74,7 @@ const SidebarLayout = ({ location }) => (
           {config.sidebar.links.map((link, key) => {
             if (link.link !== "" && link.text !== "") {
               return (
-                <ListItem key={key} to={link.link}>
+                <ListItem className="text-sm" key={key} to={link.link}>
                   {link.text}
                   <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="xs" />
                 </ListItem>

@@ -3,7 +3,7 @@ import { Link, StaticQuery, graphql } from "gatsby"
 
 const RelatedArticles = ({ posts }) => {
   return (
-    <div>
+    <div className="text-sm">
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
@@ -12,9 +12,10 @@ const RelatedArticles = ({ posts }) => {
               <Link to={node.fields.slug}>{title}</Link>
             </div>
             <p
+              className="italic"
               dangerouslySetInnerHTML={{
                 __html:
-                  node.frontmatter.description.slice(0, 50) + "..." ||
+                  node.frontmatter.description.slice(0, 60) + "..." ||
                   node.excerpt,
               }}
             />

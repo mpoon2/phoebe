@@ -16,11 +16,42 @@ import {
   faArrowRotateRight,
   faBarsProgress,
   faTags,
+  faSquareXmark,
+  faToggleOn,
+  faToggleOff,
 } from "@fortawesome/free-solid-svg-icons"
 import { useKeycloak } from "@react-keycloak/web"
+import { animated } from "react-spring"
+import {
+  setVisibility,
+  useAnimation,
+} from "../components/sidebar/sidebar-animation"
 import "./blog-post.scss"
 
 const BlogPostTemplate = ({ data, location }) => {
+  /* Sidebar toggle */
+  const LOCAL_STORAGE_KEY = "isSidebarOpen"
+  function useSidebar() {
+    const persistedState =
+      typeof window === "undefined"
+        ? false
+        : localStorage.getItem(LOCAL_STORAGE_KEY) === "true"
+    const [isOpen, setIsOpen] = React.useState(false)
+    const toggle = () => setIsOpen(value => !value)
+    // Persist to localStorage
+    React.useEffect(() => {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(isOpen))
+    }, [isOpen])
+    // Rehydrate with persisted data
+    React.useEffect(() => {
+      setIsOpen(persistedState)
+    }, [])
+    return { isOpen, toggle }
+  }
+  const { isOpen, toggle } = useSidebar()
+  const styles = setVisibility(isOpen)
+  const animation = useAnimation(isOpen)
+
   const { keycloak, initialized } = useKeycloak()
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -33,29 +64,40 @@ const BlogPostTemplate = ({ data, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <div class="article-body max-w-screen-2xl mx-auto px-4 sm:px-12 lg:px-16">
-        <nav class={`left-sidebar hidden xl:block pr-4`} role="navigation">
+        <animated.div
+          style={animation.sidebar}
+          class={`left-sidebar pr-8 ${styles.sidebar}`}
+          role="navigation"
+        >
+          <button
+            className="block xl:hidden text-right w-full hero-highlight mb-4"
+            onClick={toggle}
+          >
+            <FontAwesomeIcon icon={faSquareXmark} size="xl" />
+          </button>
           <SidebarNav location={location} />
-        </nav>
+        </animated.div>
         <section>
           <article
-            className="blog-post p-0 xl:pl-4 lg:pr-2 xl:pr-4 "
+            className="blog-post p-0 lg:pr-2 xl:pr-4 "
             itemScope
             itemType="http://schema.org/Article"
           >
+            <div className="hero-highlight w-full text-right sticky -top-1 right-0 -mt-6">
+              <button className="" onClick={toggle}>
+                {isOpen ? (
+                  <FontAwesomeIcon icon={faToggleOn} />
+                ) : (
+                  <FontAwesomeIcon icon={faToggleOff} />
+                )}
+              </button>
+            </div>
             <header className="metadata">
               <nav className="flex breadcrumbs" aria-label="Breadcrumb">
                 <ol className="inline-flex m-0 p-0">
                   <li class="inline-flex mr-1">
                     <a href="#" class="inline-flex items-center font-bold">
-                      <svg
-                        class="w-3 h-3 mr-1"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
-                      </svg>
-                      Home
+                      首页 · Home
                     </a>
                   </li>
                   {post.fields.slug.split("/").map((breadcrumb, i, arr) => {
@@ -95,7 +137,7 @@ const BlogPostTemplate = ({ data, location }) => {
               <p className="meta">
                 <span className="mr-4">
                   <FontAwesomeIcon icon={faTags} className="mr-1" size="xs" />
-                  <span className="font-medium text-sm">Tags: {` `}</span>
+                  <span className="font-medium text-sm">{` `}</span>
                   {post.frontmatter.tags.map((tag, i, arr) => {
                     if (arr.length - 1 === i) {
                       // last one
@@ -123,7 +165,7 @@ const BlogPostTemplate = ({ data, location }) => {
                     className="mr-1"
                     size="xs"
                   />
-                  <span className="font-medium text-sm">Created: {` `}</span>
+                  <span className="font-medium text-sm">{` `}</span>
                   {post.frontmatter.date}
                 </span>
                 <span
@@ -135,7 +177,7 @@ const BlogPostTemplate = ({ data, location }) => {
                     className="mr-1"
                     size="xs"
                   />
-                  <span className="font-medium text-sm">Updated: {` `}</span>
+                  <span className="font-medium text-sm">{` `}</span>
                   {post.frontmatter.modified}
                 </span>
                 <span
@@ -147,7 +189,7 @@ const BlogPostTemplate = ({ data, location }) => {
                     className="mr-1"
                     size="xs"
                   />
-                  <span className="font-medium text-sm">Status: {` `}</span>
+                  <span className="font-medium text-sm">{` `}</span>
                   {post.frontmatter.status}
                 </span>
               </p>

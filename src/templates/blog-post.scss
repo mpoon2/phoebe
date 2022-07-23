@@ -4,7 +4,12 @@
 }
 
 .left-sidebar {
+  z-index: 99999;
+  background-color: var(--body-light);
   flex: 0 16rem;
+}
+.dark-mode .left-sidebar {
+  background-color: var(--body-dark);
 }
 
 .right-sidebar {

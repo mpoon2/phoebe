@@ -323,10 +323,12 @@ a:focus {
 }
 
 /* Chinese Text RL */
+
 .chinese-text {
   writing-mode: vertical-rl;
   text-orientation: upright;
 }
+
 /* Custom TailwindCSS Additions */
 .text-xxs {
   font-size: 0.5rem;

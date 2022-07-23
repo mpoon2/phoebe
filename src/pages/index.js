@@ -3,14 +3,13 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Footer from "../components/footer"
-import HeroSVG from "../images/hero.inline.svg"
+import Reveal from "../components/reveal"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRotateRight, faTags } from "@fortawesome/free-solid-svg-icons"
 import "./index.scss"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-
   const posts = data.allMarkdownRemark.nodes
 
   if (posts.length === 0) {
@@ -31,8 +30,28 @@ const BlogIndex = ({ data, location }) => {
       <Seo title="All posts" />
       <div className="hero-bg">
         <div className="hero-parent max-w-screen-2xl m-auto lg:flex py-16">
-          <div className="max-h-fit lg:flex-auto px-4 sm:px-12 lg:pl-16 lg:pr-0">
-            <div className="lg:text-7xl lg:py-12 text-6xl">
+          <div className="max-h-fit lg:flex-none lg:w-3/5 lg:pr-0 my-auto px-4 sm:px-12 lg:pr-16 order-2">
+            <h1 className="mt-0 hero-header lg:text-left text-center">
+              Oh,{" "}
+              <Reveal className="hero-highlight" start="Hello" hover="你好" />{" "}
+              there.
+            </h1>{" "}
+            <p className="hero-subtitle font-medium hero-text lg:text-left text-center">
+              I'm mattycakes, a student at Athabasca University, mediocore
+              photographer, and self-hosted enthusiast. You've stumbled upon a
+              place where I collect little snippets of knowledge and practice a
+              variety of things (including my mother's native tongue). This is
+              my{` `}
+              <Reveal
+                className="hero-highlight"
+                start="digital garden"
+                hover="電子禪花園"
+              />
+              .
+            </p>
+          </div>
+          <div className="max-h-fit lg:flex-auto px-4 sm:px-12 lg:pl-16 lg:pr-0 order-1">
+            <div className="xl:text-7xl lg:py-12 text-6xl">
               <p className="chinese-text leading-tight m-auto">
                 哦，<span className="hero-highlight">你好</span>
                 <br />
@@ -45,18 +64,6 @@ const BlogIndex = ({ data, location }) => {
                 <span className="hero-highlight">電子禪花園</span>
               </p>
             </div>
-          </div>
-          <div className="max-h-fit lg:flex-none lg:w-3/5 lg:pr-0 my-auto px-4 sm:px-12 lg:pr-16">
-            <h1 className="mt-0 hero-header lg:text-left text-center">
-              Oh, <span className="hero-highlight">Hello</span> there.
-            </h1>{" "}
-            <p className="hero-subtitle font-medium hero-text lg:text-left text-center">
-              I'm mattycakes, a student at Athabasca University, mediocore
-              photographer, and self-hosted enthusiast. You've stumbled upon a
-              place where I collect my snippets of knowledge and practice a
-              variety of things (including the my mother's native tongue). This
-              is my digital garden.
-            </p>
           </div>
         </div>
       </div>

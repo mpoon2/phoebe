@@ -18,9 +18,8 @@ const Footer = () => {
         <span className="font-medium">
           © {new Date().getFullYear()}
           {` `}
-          <Icon className="inline m-auto h-4 pb-[2px] footer-logo" />
-          {` `}
-          Matthew Y.F. Poon -{` `}
+          潘怡暉 · Mattycakes
+          {` `}-{` `}
           Made with
           {` `}
           <FontAwesomeIcon icon={faHeart} size="s" />

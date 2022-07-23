@@ -60,7 +60,7 @@ const SidebarLayout = ({ location }) => (
     render={({ allMarkdownRemark }) => {
       return (
         <Sidebar>
-          <p className="header-div">Sidebar Navigation</p>
+          <p className="header-div">导航 · Sidebar Navigation</p>
           <Link to="/" className="text-sm">
             <FontAwesomeIcon icon={faArrowLeft} size="s" />
             {` `}Home

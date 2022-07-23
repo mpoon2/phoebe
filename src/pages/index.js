@@ -31,26 +31,40 @@ const BlogIndex = ({ data, location }) => {
       <Seo title="All posts" />
       <div className="hero-bg">
         <div className="hero-parent max-w-screen-2xl m-auto lg:flex py-16">
-          <div className="max-h-fit lg:flex-none lg:w-1/3 lg:pr-0 my-auto px-4 sm:px-12 lg:pl-16">
-            <h1 className="mt-0 hero-header">
+          <div className="max-h-fit lg:flex-auto px-4 sm:px-12 lg:pl-16 lg:pr-0">
+            <div className="lg:text-7xl lg:py-12 text-6xl">
+              <p className="chinese-text leading-tight m-auto">
+                哦，<span className="hero-highlight">你好</span>
+                <br />
+                我的名字
+                <br />
+                是潘怡暉
+                <br />
+                欢迎来到我的
+                <br />
+                <span className="hero-highlight">電子禪花園</span>
+              </p>
+            </div>
+          </div>
+          <div className="max-h-fit lg:flex-none lg:w-3/5 lg:pr-0 my-auto px-4 sm:px-12 lg:pr-16">
+            <h1 className="mt-0 hero-header lg:text-left text-center">
               Oh, <span className="hero-highlight">Hello</span> there.
             </h1>{" "}
-            <p className="hero-subtitle font-medium hero-text">
-              I'm mattycakes, a student at Athabasca University, a mediocore
-              photographer, and self-hosted enthusiast. This is my digital
-              garden.
+            <p className="hero-subtitle font-medium hero-text lg:text-left text-center">
+              I'm mattycakes, a student at Athabasca University, mediocore
+              photographer, and self-hosted enthusiast. You've stumbled upon a
+              place where I collect my snippets of knowledge and practice a
+              variety of things (including the my mother's native tongue). This
+              is my digital garden.
             </p>
-          </div>
-          <div className="max-h-fit lg:flex-auto px-4 sm:px-12 lg:pr-16 lg:pl-0">
-            <div className="lg:py-12">
-              <HeroSVG />
-            </div>
           </div>
         </div>
       </div>
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-12 lg:px-16 lg:flex block">
         <div className="lg:w-3/5 lg:pr-8">
-          <h2 className="writer-header header-div">The Writer's Block</h2>
+          <h2 className="writer-header header-div">
+            長篇大論 · The Writer's Block
+          </h2>
           <ol style={{ listStyle: `none` }}>
             {posts
               // filter the posts for slugs
@@ -129,7 +143,9 @@ const BlogIndex = ({ data, location }) => {
           </ol>
         </div>
         <div className="lg:w-2/5 lg:pl-8">
-          <h2 className="writer-header header-div">The Academic Journal</h2>
+          <h2 className="writer-header header-div">
+            學業曰記 · The Academic Journal
+          </h2>
           <ol style={{ listStyle: `none` }}>
             {posts
               // filter the posts for slugs

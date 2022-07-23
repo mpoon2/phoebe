@@ -44,6 +44,9 @@ svg.brand-logo {
   .cls-2 {
     fill: var(--text-light);
   }
+  .cls-3 {
+    fill: var(--text-light);
+  }
 }
 
 .dark-mode svg.brand-logo {
@@ -51,6 +54,9 @@ svg.brand-logo {
     fill: var(--link);
   }
   .cls-2 {
+    fill: var(--text-dark);
+  }
+  .cls-3 {
     fill: var(--text-dark);
   }
 }

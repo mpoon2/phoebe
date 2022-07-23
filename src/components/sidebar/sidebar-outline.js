@@ -8,7 +8,7 @@ import "./sidebar-outline.scss"
 
 const ToC = ({ headings }) => (
   <Toc>
-    <p className="header-div">Table of contents</p>
+    <p className="header-div">目录 · Table of contents</p>
     <InnerScroll className="text-sm">
       {headings.map(heading => {
         if (heading.depth > 4) {

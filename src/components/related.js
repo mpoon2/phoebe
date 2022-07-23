@@ -89,7 +89,7 @@ export default props => {
         // render posts
         return (
           <>
-            <p className="header-div">Related Articles</p>
+            <p className="header-div">相关文章 · Related Articles</p>
             <RelatedArticles posts={related} />
           </>
         )

@@ -322,7 +322,21 @@ a:focus {
   }
 }
 
+/* Chinese Text RL */
+.chinese-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
 /* Custom TailwindCSS Additions */
 .text-xxs {
   font-size: 0.5rem;
+}
+.text-10xl {
+  font-size: 12rem; /* 192px */
+}
+.text-11xl {
+  font-size: 16rem; /* 256px */
+}
+.text-12xl {
+  font-size: 20rem; /* 320px */
 }

@@ -68,18 +68,7 @@ module.exports = {
     },
     `gatsby-plugin-emotion`,
     `gatsby-plugin-fontawesome-css`,
-    {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        google: {
-          families: [
-            "Inter:300,400,500,600,700,800,900",
-            "Fira Code:300,400,500,600,700",
-          ],
-        },
-      },
-    },
-    "gatsby-plugin-use-dark-mode",
+    `gatsby-plugin-use-dark-mode`,
     {
       resolve: "gatsby-plugin-react-svg",
       options: {

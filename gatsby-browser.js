@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSpinner } from "@fortawesome/free-solid-svg-icons"
 import keycloak from "./src/components/keycloak"
 
+// IMPORT FONTS
+import "@fontsource/inter/variable.css"
+import "@fontsource/fira-code"
 // NORMALIZE CSS ACROSS ALL BROWSERS
 import "./src/styles/normalize.css"
 // TAILWIND CSS IMPORT
